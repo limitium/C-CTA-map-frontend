@@ -12,7 +12,7 @@ $(document).ready(function () {
 
     $("li a").toggle(function () {
         var link = $(this);
-        var scale = zoom == 1 ? 1 : zoom * 1.5;
+        var scale = zoom == 1 ? 1 : zoom * 1.1;
         var color = colors[$("li a.selected").length % colors.length];
         link.addClass("selected").css({"color":color });
         $(".nick[an=" + link.attr("data-name") + "]").addClass("selected").css({
@@ -23,7 +23,7 @@ $(document).ready(function () {
         return false;
     }, function () {
         var link = $(this);
-        var scale = zoom == 1 ? 1 : zoom * 1.5;
+        var scale = zoom == 1 ? 1 : zoom ;
         link.removeClass("selected").css({"color":"" });
         $(".nick[an=" + link.attr("data-name") + "]").removeClass("selected").css({
             "background-color":"",
@@ -49,7 +49,7 @@ $(document).ready(function () {
         if (zoom <= 0) {
             return false;
         }
-        var scale = zoom == 1 ? 1 : zoom * 1.5;
+        var scale = zoom == 1 ? 1 : zoom ;
 
         zooming = true;
         nicks.each(function (d) {
