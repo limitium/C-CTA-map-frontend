@@ -44,8 +44,8 @@ class Map
             }
             $ans[$user['an']]++;
             foreach ($user["c"] as $base) {
-                $x = $base['x'] - $minX;
-                $y = $base['y'] - $minY;
+                $x = $base['x'] - $minX+ 100 ;
+                $y = $base['y'] - $minY+ 100;
                 echo '<div p="' . $base["p"] . '" n="' . strtolower($user["n"]) . '" x="' . $x . '" y="' . $y . '" class="nick" an="' . $user['an'] . '" style="top:' . $y . 'px;left:' . $x . 'px">';
                 echo '</div>';
             }

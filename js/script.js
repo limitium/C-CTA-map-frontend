@@ -23,7 +23,7 @@ $(document).ready(function () {
         return false;
     }, function () {
         var link = $(this);
-        var scale = zoom == 1 ? 1 : zoom ;
+        var scale = zoom == 1 ? 1 : zoom;
         link.removeClass("selected").css({"color":"" });
         $(".nick[an=" + link.attr("data-name") + "]").removeClass("selected").css({
             "background-color":"",
@@ -49,7 +49,7 @@ $(document).ready(function () {
         if (zoom <= 0) {
             return false;
         }
-        var scale = zoom == 1 ? 1 : zoom ;
+        var scale = zoom == 1 ? 1 : zoom;
 
         zooming = true;
         nicks.each(function (d) {
@@ -62,8 +62,8 @@ $(document).ready(function () {
             d.css({
                 "top":d.attr("y") * scale + "px",
                 "left":d.attr("x") * scale + "px",
-                "width":2*scale + "px",
-                "height":2*scale + "px",
+                "width":2 * scale + "px",
+                "height":2 * scale + "px",
                 "webkit-border-radius":2 * scale + "px",
                 "-moz-border-radius":2 * scale + "px",
                 "border-radius":2 * scale + "px"
@@ -102,7 +102,7 @@ $(document).ready(function () {
         user.popover({
             placement:"top",
             title:user.attr("n"),
-            content:"score: " + user.attr("p") + "<br />player: " + user.attr("n") + "<br />alliance: " + user.attr("an") + "<br />x:" + user.attr("x") + ", y:" + user.attr("y")
+            content:"score: " + user.attr("p") + "<br />player: " + user.attr("n") + "<br />alliance: " + user.attr("an") + "<br />x:" + (user.attr("x") - 100) + ", y:" + (user.attr("y") - 100)
         })
     });
 //    var dragged = false;
