@@ -23,17 +23,21 @@ class Map
 
         $minX = 1000;
         $minY = 1000;
+        $maxX = 0;
+        $maxY = 0;
         foreach ($users as $user) {
             foreach ($user["c"] as $base) {
                 $minX = min($minX, $base['x']);
                 $minY = min($minY, $base['y']);
+                $maxX = max($maxX, $base['x']);
+                $maxY = max($maxY, $base['y']);
 
             }
         }
         foreach ($users as $user) {
-//            if ($user['r'] < 3500) {
-//                continue;
-//            }
+            //            if ($user['r'] < 3500) {
+            //                continue;
+            //            }
             $user['an'] = preg_replace('/\s+/', '', $user['an']);
 
             if ($user['an'] == "") {
@@ -44,16 +48,16 @@ class Map
             }
             $ans[$user['an']]++;
             foreach ($user["c"] as $base) {
-                $x = $base['x'] - $minX+ 100 ;
-                $y = $base['y'] - $minY+ 100;
-                echo '<div p="' . $base["p"] . '" n="' . strtolower($user["n"]) . '" x="' . $x . '" y="' . $y . '" class="nick" an="' . $user['an'] . '" style="top:' . $y . 'px;left:' . $x . 'px">';
+                $x = $base['x'] - $minX + 100;
+                $y = $base['y'] - $minY + 100;
+                echo '<div p="' . $base["p"] . '" n="' . strtolower($user["n"]) . '" x="' . $x . '" y="' . $y . '" rx="' . $base['x'] . '" ry="' . $base['y'] . '" class="nick" an="' . $user['an'] . '" style="top:' . $y . 'px;left:' . $x . 'px">';
                 echo '</div>';
             }
         }
 
 
         uasort($ans, "Map::sort");
-        return $ans;
+        return array($ans,$maxX,$maxY);
     }
 
     public static function sort($a, $b)

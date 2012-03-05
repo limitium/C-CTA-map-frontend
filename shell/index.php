@@ -43,7 +43,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
 </header>
 <div id="main">
     <?php
-    require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . "map.php"; $ans = Map::render();
+    require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . "map.php"; $data = Map::render();
     ?>
     <div class="alliance well">
         <div class="actions">
@@ -57,7 +57,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
             </form>
         </div>
         <ul class="">
-            <?php foreach ($ans as $an => $c): ?>
+            <?php foreach ($data[0] as $an => $c): ?>
             <?php echo "<li><a href='' data-name='$an'>$an ($c)</a></li>"; ?>
             <?php endforeach; ?>
         </ul>

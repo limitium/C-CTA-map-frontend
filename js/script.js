@@ -102,7 +102,7 @@ $(document).ready(function () {
         user.popover({
             placement:"top",
             title:user.attr("n"),
-            content:"score: " + user.attr("p") + "<br />player: " + user.attr("n") + "<br />alliance: " + user.attr("an") + "<br />x:" + (user.attr("x") - 100) + ", y:" + (user.attr("y") - 100)
+            content:"score: " + user.attr("p") + "<br />player: " + user.attr("n") + "<br />alliance: " + user.attr("an") + "<br />x:" + user.attr("rx")  + ", y:" + user.attr("ry")
         })
     });
 //    var dragged = false;
