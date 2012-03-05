@@ -62,8 +62,8 @@ $(document).ready(function () {
             d.css({
                 "top":d.attr("y") * scale + "px",
                 "left":d.attr("x") * scale + "px",
-                "width":scale + "px",
-                "height":scale + "px",
+                "width":2*scale + "px",
+                "height":2*scale + "px",
                 "webkit-border-radius":2 * scale + "px",
                 "-moz-border-radius":2 * scale + "px",
                 "border-radius":2 * scale + "px"
