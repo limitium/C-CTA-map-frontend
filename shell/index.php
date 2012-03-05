@@ -63,7 +63,6 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
         </ul>
         <div class="menuhider"></div>
     </div>
-    ';
 </div>
 <footer>
 

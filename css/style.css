@@ -295,7 +295,7 @@ td { vertical-align: top; }
     display: block;
     margin: 0px;
     top: 0px;
-    left: 0px;
+    right: 0px;
     height: 500px;
     opacity: 0.7;
     width: 400px;
@@ -308,7 +308,7 @@ td { vertical-align: top; }
     display: block;
     margin: 0px;
     top: 0px;
-    left: 0px;
+    right: 0px;
     border: 1px solid black;
     width: 250px;
     position: fixed;
