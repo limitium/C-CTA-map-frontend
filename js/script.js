@@ -34,7 +34,7 @@ $(document).ready(function () {
     $("a[data-name=RusssianAllianceW]").trigger("click");
     $("a[data-name=RussianAllianceN]").trigger("click");
 
-    var nicks = $(".nick"), span = $('.zoom-lvl');
+    var nicks = $(".nick"), span = $('.zoom-lvl'), grid = $("td");
 
     $("#zoom-in").click(function () {
         changeZoom(++zoom);
@@ -52,13 +52,9 @@ $(document).ready(function () {
         var scale = zoom == 1 ? 1 : zoom;
 
         zooming = true;
+
         nicks.each(function (d) {
             var d = $(this);
-//            d.css({
-//                            "top":d.attr("y") * scale + "px",
-//                            "left":d.attr("x") * scale + "px",
-//                            "font-size":2 * scale + "px"
-//                        });
             d.css({
                 "top":d.attr("y") * scale + "px",
                 "left":d.attr("x") * scale + "px",
@@ -67,10 +63,13 @@ $(document).ready(function () {
                 "webkit-border-radius":2 * scale + "px",
                 "-moz-border-radius":2 * scale + "px",
                 "border-radius":2 * scale + "px"
-
-//                            "font-size":2 * scale + "px"
             });
         });
+        grid.css({
+            "height":scale+(99 * scale) + "px"
+        });
+        $("table").width((scale+99 * scale )* 10);
+
         zooming = false;
         span.html(zoom);
     }
@@ -102,7 +101,7 @@ $(document).ready(function () {
         user.popover({
             placement:"top",
             title:user.attr("n"),
-            content:"score: " + user.attr("p") + "<br />player: " + user.attr("n") + "<br />alliance: " + user.attr("an") + "<br />x:" + user.attr("rx")  + ", y:" + user.attr("ry")
+            content:"score: " + user.attr("p") + "<br />player: " + user.attr("n") + "<br />alliance: " + user.attr("an") + "<br />x:" + user.attr("rx") + ", y:" + user.attr("ry")
         })
     });
 //    var dragged = false;

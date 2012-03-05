@@ -45,11 +45,22 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
     <?php
     require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . "map.php"; $data = Map::render();
     ?>
+    <table>
+        <?php for ($i = 0; $i < ceil($data[1] / 100); $i++): ?>
+        <tr>
+            <?php for ($j = 0; $j < ceil($data[2] / 100); $j++): ?>
+            <td><?php echo (chr(65 + $i)) . ":" . ($j); ?></td>
+            <?php endfor; ?>
+        </tr>
+        <?php endfor; ?>
+    </table>
+
     <div class="alliance well">
         <div class="actions">
             <button class="btn btn-primary" id="zoom-out"><i class="icon-minus"></i></button>
             <button class="btn btn-primary" id="zoom-in"><i class="icon-plus"></i></button>
             <span>Zoom lvl: </span><span class="zoom-lvl">1</span>
+
             <form class="form-search">
                 <label>Nick:</label>
                 <input type="text" class="input-medium search-query">
@@ -63,6 +74,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
         </ul>
         <div class="menuhider"></div>
     </div>
+
 </div>
 <footer>
 
