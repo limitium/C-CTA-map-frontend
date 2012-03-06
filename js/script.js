@@ -65,10 +65,17 @@ $(document).ready(function () {
                 "border-radius":2 * scale + "px"
             });
         });
-        grid.css({
-            "height":scale+(99 * scale) + "px"
+
+        var size = (scale + 99 * scale ) * 10;
+        $("table,#main").css({
+            "width":size,
+            "height":size
         });
-        $("table").width((scale+99 * scale )* 10);
+
+        grid.css({
+            "height":scale + (99 * scale) + "px",
+            "width":scale + (99 * scale) + "px"
+        });
 
         zooming = false;
         span.html(zoom);
