@@ -56,7 +56,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
     </table>
     <div class="menu info well">
         <div>Server: Close beta 3</div>
-        <div>Players: <?php echo $data[3]; ?></div>
+        <div>Bases: <?php echo $data[3]; ?></div>
         <div>Last update: <?php echo $data[4]; ?></div>
         <p>Use Google Chrome for best performance</p>
     </div>

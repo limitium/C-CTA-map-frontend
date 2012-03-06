@@ -49,7 +49,7 @@ $last = cc::getData('RankingGetCount', array(
 
 
 $step = 1000;
-$cur = 0;
+$cur = 8000;
 print_r("Total: $last\r\n");
 while ($cur < $last) {
     $next = $cur + $step;
