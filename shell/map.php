@@ -15,10 +15,10 @@ class Map
         $users = array();
         foreach (scandir($dataPath) as $f) {
             if (!in_array($f, array('.', ".."))) {
-                $users = array_merge($users, require_once $dataPath . DIRECTORY_SEPARATOR . $f);
-
+                $fname = $dataPath . DIRECTORY_SEPARATOR . $f;
+                $users = array_merge($users, require_once $fname);
+                $update = date("d/m/Y H:i:s",filectime($fname));
             }
-
         }
 
         $minX = 1000;
@@ -48,8 +48,10 @@ class Map
             }
             $ans[$user['an']]++;
             foreach ($user["c"] as $base) {
-                $x = $base['x'] /*- $minX + 100*/;
-                $y = $base['y'] /*- $minY + 100*/;
+                $x = $base['x'] /*- $minX + 100*/
+                ;
+                $y = $base['y'] /*- $minY + 100*/
+                ;
                 echo '<div p="' . $base["p"] . '" n="' . strtolower($user["n"]) . '" x="' . $x . '" y="' . $y . '" rx="' . $base['x'] . '" ry="' . $base['y'] . '" class="nick" an="' . $user['an'] . '" style="top:' . $y . 'px;left:' . $x . 'px">';
                 echo '</div>';
             }
@@ -57,7 +59,7 @@ class Map
 
 
         uasort($ans, "Map::sort");
-        return array($ans,$maxX,$maxY);
+        return array($ans, $maxX, $maxY, sizeof($users), $update);
     }
 
     public static function sort($a, $b)

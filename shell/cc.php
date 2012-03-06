@@ -40,21 +40,23 @@ class cc
     }
 }
 
-cc::$ses = "6ee91825-d051-4382-9711-d6748fdc80ad";
+cc::$ses = "214b232f-079e-4d8d-b17a-f0633166fff3";
 
 $last = cc::getData('RankingGetCount', array(
     "view" => 0,
     "rankingType" => 0)) - 1;
 
 
-$users = array();
+
 $step = 1000;
 $cur = 0;
+print_r("Total: $last\r\n");
 while ($cur < $last) {
     $next = $cur + $step;
     if ($next > $last) {
         $next = $last;
     }
+    $users = array();
     print_r("Get from $cur to $next \r\n");
     $p = cc::getData('RankingGetData', array(
             "view" => 0,
@@ -72,8 +74,9 @@ while ($cur < $last) {
         }
         $users[] = array_merge($user, $addData);
     }
+
     $cur = $next;
+    file_put_contents("c:\\cc".$cur, "<?php return " . var_export($users, true) . ";");
 }
-file_put_contents("c:\\cc", "<?php return " . var_export($users, true) . ";");
 
 

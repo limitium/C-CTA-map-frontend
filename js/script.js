@@ -95,15 +95,9 @@ $(document).ready(function () {
             setTimeout(function () {
                 u.popover('hide');
             }, 2000)
-//            u.animate({"background-color":"black"}, 600)
-//                .animate({"background-color":"white"}, 600)
-//                .animate({"background-color":"black"}, 600)
-//                .animate({"background-color":"white"}, 600)
-//                .animate({"background-color":"black"}, 600)
-//                .animate({"background-color":"white"}, 600);
         }
     }
-    $(".nick").each(function (i, user) {
+    nicks.each(function (i, user) {
         user = $(user);
         user.popover({
             placement:"top",
@@ -111,27 +105,4 @@ $(document).ready(function () {
             content:"score: " + user.attr("p") + "<br />player: " + user.attr("n") + "<br />alliance: " + user.attr("an") + "<br />x:" + user.attr("rx") + ", y:" + user.attr("ry")
         })
     });
-//    var dragged = false;
-//    $("html").mousemove(function (event) {
-//        if (dragged) {
-//            console.log(dragged)
-//            var msg = "Handler for .mousemove() called at ";
-//            var b = $('body');
-////            console.log(event.pageY-dragged.pageY)
-////            console.log(event.pageY-dragged.pageY)
-//            b.scrollTop(dragged.scrollTop + dragged.pageY - event.pageY);
-//            b.scrollLeft(dragged.scrollLeft + dragged.pageX - event.pageX);
-//            msg += event.pageX + ", " + event.pageY;
-//            console.log(msg);
-//        }
-//    });
-//    $("html").mousedown(function (e) {
-//        var b = $('body');
-//        dragged = e;
-//        e.scrollTop = b.scrollTop();
-//        e.scrollLeft = b.scrollLeft();
-//    })
-//    $("html").mouseup(function () {
-//        dragged = false;
-//    })
 });

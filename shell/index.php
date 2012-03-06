@@ -54,8 +54,14 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
         </tr>
         <?php endfor; ?>
     </table>
+    <div class="menu info well">
+        <div>Server: Close beta 3</div>
+        <div>Players: <?php echo $data[3]; ?></div>
+        <div>Last update: <?php echo $data[4]; ?></div>
+        <p>Use Google Chrome for best performance</p>
+    </div>
 
-    <div class="alliance well">
+    <div class="menu alliance well">
         <div class="actions">
             <button class="btn btn-primary" id="zoom-out"><i class="icon-minus"></i></button>
             <button class="btn btn-primary" id="zoom-in"><i class="icon-plus"></i></button>
