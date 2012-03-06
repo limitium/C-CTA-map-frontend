@@ -375,28 +375,25 @@ a.selected{
     /*font-weight: 900;*/
     /*font-size: 6px;*/
     /*opacity: 1;*/
-    webkit-box-shadow:0 0 4px black;
-    -moz-box-shadow:0 0 4px black;
-    box-shadow:0 0 4px black;
 }
 html{
     cursor: pointer;
     /*background: url("../img/bg.png") repeat scroll left bottom transparent*/
 
 }
-table,tr,td{
-    z-index: -100;
+#pop{
+    z-index: 100;
+    position: absolute;
+    margin: 0;
+    padding:0;
+    /*background-color: #000000;*/
+    height: 5px;
+    width: 5px;
 }
-td{
-    margin:0;
-    padding: 0;
-    text-align: center;
-    vertical-align: middle;
-    font-size: 40px;
-    font-family: 900;
-    opacity: 0.2;
-    width: 99px;
-    height: 99px;
-    border-bottom: 1px solid #eee;
-    border-right: 1px solid #eee;
+canvas{
+    z-index: -100;
+    border: 1px solid black;
+    /*webkit-box-shadow:0 0 14px black;*/
+     /*-moz-box-shadow:0 0 14px black;*/
+     /*box-shadow:0 0 14px black;*/
 }

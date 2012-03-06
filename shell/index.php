@@ -38,22 +38,14 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
 <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a
     different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a>
     to experience this site.</p><![endif]-->
-<header>
-
-</header>
 <div id="main">
     <?php
     require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . "map.php"; $data = Map::render();
     ?>
-    <table>
-        <?php for ($i = 0; $i < ceil($data[1] / 100); $i++): ?>
-        <tr>
-            <?php for ($j = 0; $j < ceil($data[2] / 100); $j++): ?>
-            <td><?php echo (chr(65 + $i)) . ":" . ($j); ?></td>
-            <?php endfor; ?>
-        </tr>
-        <?php endfor; ?>
-    </table>
+    <div id="pop"></div>
+    <canvas width="1000px" height="1000px">
+
+    </canvas>
     <div class="menu info well">
         <div>Server: Close beta 3</div>
         <div>Bases: <?php echo $data[3]; ?></div>
@@ -78,13 +70,9 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
             <?php echo "<li><a href='' data-name='$an'>$an ($c)</a></li>"; ?>
             <?php endforeach; ?>
         </ul>
-        <div class="menuhider"></div>
     </div>
 
 </div>
-<footer>
-
-</footer>
 
 
 <!-- JavaScript at the bottom for fast page loading -->
@@ -93,9 +81,9 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="/js/libs/jquery-1.7.1.min.js"><\/script>')</script>
 
-
 <!-- scripts concatenated and minified via build script -->
 <script src="/js/plugins.js"></script>
+<script src="/js/data.js"></script>
 <script src="/js/script.js"></script>
 <!-- end scripts -->
 
