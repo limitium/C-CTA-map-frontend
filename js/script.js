@@ -89,7 +89,12 @@ var map = {
         if (z < 1) {
             z = 1;
         }
+
         map.z = z;
+        if (z == 1) {
+            map.ox = 0;
+            map.oy = 0;
+        }
         map.show();
     },
     show:function () {
