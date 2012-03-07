@@ -73,7 +73,7 @@ var map = {
                 color = map.selected[base.an];
             }
 
-            if (base.dx > 1000 || base.dy > 1000) {
+            if (base.dx > 1000 || base.dy > 1000 || base.dx < 0 || base.dy < 0) {
                 continue;
             }
             map.v.beginPath();
