@@ -15,22 +15,24 @@ var map = {
         map.drawGrid();
         map.drawBases();
     },
-    drawXLine:function (x, scale) {
-        map.v.moveTo(map.ox + scale * x * 100, map.oy + 0);
-        map.v.lineTo(map.ox + scale * x * 100, map.oy + scale * 1000);
+    drawXLine:function (x, scale, maxY) {
+        map.v.moveTo(map.ox + scale * x * 100, map.oy);
+        map.v.lineTo(map.ox + scale * x * 100, maxY);
         map.v.lineWidth = 1;
         map.v.strokeStyle = "#eee"; // line color;
         map.v.stroke();
     },
-    drawYLine:function (y, scale) {
-        map.v.moveTo(map.ox + 0, map.oy + scale * y * 100);
-        map.v.lineTo(map.ox + scale * 1000, map.oy + scale * y * 100);
+    drawYLine:function (y, scale, maxX) {
+        map.v.moveTo(map.ox, map.oy + scale * y * 100);
+        map.v.lineTo(maxX, map.oy + scale * y * 100);
         map.v.lineWidth = 1;
         map.v.strokeStyle = "#eee"; // line color;
         map.v.stroke();
     },
     drawGrid:function () {
         var scale = map.getScale();
+        var maxX = map.ox + scale * 1000;
+        var maxY = map.oy + scale * 1000;
         for (var i = 0; i < 10; i++) {
             for (var j = 0; j < 10; j++) {
                 var mark = String.fromCharCode(65 + j) + ":" + i;
@@ -40,11 +42,11 @@ var map = {
                 map.v.fillText(mark, map.ox + scale * i * 100 + 50 * scale, map.oy + scale * j * 100 + 60 * scale)
             }
 
-            map.drawXLine(i, scale);
-            map.drawYLine(i, scale);
+            map.drawXLine(i, scale, maxY);
+            map.drawYLine(i, scale, maxX);
         }
-        map.drawXLine(10, scale);
-        map.drawYLine(10, scale);
+        map.drawXLine(10, scale, maxY);
+        map.drawYLine(10, scale, maxX);
     },
     getScale:function () {
         var scale;
@@ -56,32 +58,32 @@ var map = {
         return scale;
     },
     drawBases:function () {
-        var scale = map.getScale();
-        $.each(bases, function () {
-            var color = "#6CB4CC", dx = map.ox + scale * this.x, dy = map.oy + scale * this.y, r = scale * 1;
-            if (typeof map.selected[this.an] != 'undefined') {
-                color = map.selected[this.an];
+        var scale = map.getScale(),
+            i = bases.length,
+            r = scale * 1,
+            a = 2 * Math.PI;
+        while (i--) {
+            var base = bases[i],
+                color = "#6CB4CC";
+
+            base.dx = map.ox + scale * base.x;
+            base.dy = map.oy + scale * base.y;
+
+            if (typeof map.selected[base.an] != 'undefined') {
+                color = map.selected[base.an];
             }
 
-            this.dx = dx;
-            this.dy = dy;
-            this.r = r + 1;
+            if (base.dx > 1000 || base.dy > 1000) {
+                continue;
+            }
             map.v.beginPath();
-            map.v.arc(dx, dy, r, 0, 2 * Math.PI, false);
+            map.v.arc(base.dx, base.dy, r, 0, a, false);
             map.v.fillStyle = color;
             map.v.fill();
             map.v.lineWidth = 1;
             map.v.strokeStyle = color;
             map.v.stroke();
-        });
-    },
-    basesMove:function () {
-        var scale = map.getScale();
-        $.each(bases, function () {
-            this.dx = map.ox + scale * this.x;
-            this.dy = map.oy + scale * this.y;
-            this.r = scale * 1;
-        });
+        }
     },
     setZoom:function (z) {
         if (z < 1) {
