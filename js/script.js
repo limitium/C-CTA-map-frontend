@@ -2,7 +2,6 @@ var map = {
     init:function (v, z) {
         map.v = v;
         map.z = z;
-        map.f = 0;
         map.t = new Date().getTime();
         map.d = false;
         map.ox = 0;
@@ -11,10 +10,10 @@ var map = {
         map.selected = {};
     },
     draw:function () {
+        $("#pop").popover('hide');
         map.v.clearRect(0, 0, 1000, 1000);
         map.drawGrid();
         map.drawBases();
-        map.f++;
     },
     drawXLine:function (x, scale) {
         map.v.moveTo(map.ox + scale * x * 100, map.oy + 0);
@@ -76,20 +75,35 @@ var map = {
             map.v.stroke();
         });
     },
+    basesMove:function () {
+        var scale = map.getScale();
+        $.each(bases, function () {
+            this.dx = map.ox + scale * this.x;
+            this.dy = map.oy + scale * this.y;
+            this.r = scale * 1;
+        });
+    },
     setZoom:function (z) {
         if (z < 1) {
             z = 1;
         }
         map.z = z;
-        map.draw();
+        map.show();
     },
     show:function () {
         map.draw();
+        map.saveData();
+    },
+    saveData:function () {
+        map.img = map.v.getImageData(map.ox, map.oy, map.getScale() * 1000, map.getScale() * 1000);
     },
     dragStart:function (e) {
         map.d = true;
         map.dx0 = e.pageX;
         map.dy0 = e.pageY;
+
+        map.dxr0 = e.pageX;
+        map.dyr0 = e.pageY;
     },
     tooltip:function (b) {
         $("#pop").css({
@@ -119,19 +133,30 @@ var map = {
             map.oy = map.oy + dy - map.dy0;
             map.dx0 = dx;
             map.dy0 = dy;
-            map.draw();
+            map.v.clearRect(0, 0, 1000, 1000);
+            map.v.putImageData(map.img, map.ox, map.oy);
+            if (map.getScale() > 1 && (Math.abs(map.dxr0 - e.pageX) > 200 || Math.abs(map.dyr0 - e.pageY) > 200)) {
+                map.dxr0 = e.pageX;
+                map.dyr0 = e.pageY;
+                map.show();
+            }
         }
     },
     dragEnd:function (e) {
         map.d = false;
+        if (map.getScale() > 1) {
+            map.show();
+        } else {
+            map.draw();
+        }
     },
     selectAlliance:function (a) {
         map.selected[a.an] = a.c;
-        map.draw()
+        map.show();
     },
     deSelectAlliance:function (a) {
         delete map.selected[a];
-        map.draw()
+        map.show();
     },
     search:function (n) {
         $.each(bases, function () {

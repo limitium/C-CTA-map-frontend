@@ -40,7 +40,7 @@ class cc
     }
 }
 
-cc::$ses = "214b232f-079e-4d8d-b17a-f0633166fff3";
+cc::$ses = "8fc6d9ac-a4df-46e8-9581-1e387459fe9e";
 
 $last = cc::getData('RankingGetCount', array(
     "view" => 0,
@@ -49,7 +49,7 @@ $last = cc::getData('RankingGetCount', array(
 
 
 $step = 1000;
-$cur = 8000;
+$cur = 0;
 print_r("Total: $last\r\n");
 while ($cur < $last) {
     $next = $cur + $step;
