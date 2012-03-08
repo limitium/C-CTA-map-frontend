@@ -387,8 +387,8 @@ html{
     margin: 0;
     padding:0;
     /*background-color: #000000;*/
-    height: 5px;
-    width: 5px;
+    height: 1px;
+    width: 1px;
 }
 canvas{
     z-index: -100;

@@ -68,6 +68,7 @@ var map = {
 
             base.dx = map.ox + scale * base.x;
             base.dy = map.oy + scale * base.y;
+            base.r = r;
 
             if (typeof map.selected[base.an] != 'undefined') {
                 color = map.selected[base.an];
@@ -114,25 +115,32 @@ var map = {
     },
     tooltip:function (b) {
         $("#pop").css({
-            width:map.z + 4 + "px",
-            height:map.z + 4 + "px",
-            top:b.dy - 2,
-            left:b.dx - 2
+//            width:map.z + 4 + "px",
+//            height:map.z + 4 + "px",
+            top:b.dy,
+            left:b.dx
         });
         $("#pop").attr("data-content", b.bn)
         $("#pop").attr("data-original-title", "Player: " + b.n + "<br />Score: " + b.p + "<br />Alliance: " + b.an + "<br />x:" + b.x + ", y:" + b.y)
     },
     mousemove:function (e) {
         if (!map.d) {
+            var hovered = false;
             $.each(bases, function () {
                 if (Math.sqrt(Math.pow(e.pageX - this.dx, 2) + Math.pow(e.pageY - this.dy, 2)) <= this.r) {
+                    hovered = true;
                     if (map.s != this) {
                         map.tooltip(this);
+                        $("#pop").popover("show")
                     }
                     map.s = this;
                     return false;
                 }
             });
+            if (!hovered) {
+                map.s = null;
+                $("#pop").popover('hide');
+            }
         } else {
             dx = e.pageX;
             dy = e.pageY;
@@ -231,6 +239,7 @@ $(document).ready(function () {
     });
     $("a[data-name=RusssianAllianceW]").trigger("click");
     $("a[data-name=RussianAllianceN]").trigger("click");
+    $("a[data-name=RussianAllianceS]").trigger("click");
 
     var span = $('.zoom-lvl');
 
@@ -239,6 +248,8 @@ $(document).ready(function () {
         return false;
     });
     $("#pop").popover({
-        placement:"top"
+        placement:"top",
+        trigger: "manual"
+
     });
 });

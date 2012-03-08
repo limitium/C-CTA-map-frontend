@@ -40,12 +40,11 @@ class cc
     }
 }
 
-cc::$ses = "8fc6d9ac-a4df-46e8-9581-1e387459fe9e";
+cc::$ses = "d9dfae24-a5a4-4df0-841e-b4119f2ac723";
 
 $last = cc::getData('RankingGetCount', array(
     "view" => 0,
     "rankingType" => 0)) - 1;
-
 
 
 $step = 1000;
@@ -69,14 +68,16 @@ while ($cur < $last) {
     foreach ($p->p as $user) {
         $user = (array)$user;
         $addData = (array)cc::getData('GetPublicPlayerInfo', array("id" => $user['p']));
-        foreach ($addData["c"] as $i => $base) {
-            $addData["c"][$i] = (array)$base;
+        if (is_array($addData["c"])) {
+            foreach ($addData["c"] as $i => $base) {
+                $addData["c"][$i] = (array)$base;
+            }
+            $users[] = array_merge($user, $addData);
         }
-        $users[] = array_merge($user, $addData);
     }
 
     $cur = $next;
-    file_put_contents("c:\\cc".$cur, "<?php return " . var_export($users, true) . ";");
+    file_put_contents("c:\\cc" . $cur, "<?php return " . var_export($users, true) . ";");
 }
 
 
