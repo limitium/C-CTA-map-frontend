@@ -192,7 +192,9 @@ var map = {
 
 
 $(document).ready(function () {
-
+    bases = data.bases;
+    $("#last-update").html(data.updated);
+    $("#bases-total").html(bases.length);
     map.init($("canvas")[0].getContext("2d"), 1);
     map.show();
     $("#pop").popover('hide');

@@ -72,8 +72,10 @@ class Map
 
 
         uasort($ans, "Map::sort");
-        file_put_contents(dirname(__FILE__) . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . 'js' . DIRECTORY_SEPARATOR . 'data.js', "var bases = " . json_encode($bases) . ";");
-        return array($ans, $maxX, $maxY, sizeof($users), $update);
+        $bases = array('bases' => $bases,
+            'updated' => $update);
+        file_put_contents(dirname(__FILE__) . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . 'js' . DIRECTORY_SEPARATOR . 'data.js', "var data = " . json_encode($bases) . ";");
+        return array($ans, $maxX, $maxY);
     }
 
     public static function sort($a, $b)

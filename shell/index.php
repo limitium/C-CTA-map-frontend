@@ -47,9 +47,9 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
 
     </canvas>
     <div class="menu info well">
-        <div>Server: Close beta 3</div>
-        <div>Bases: <?php echo $data[3]; ?></div>
-        <div>Last update: <?php echo $data[4]; ?></div>
+        <div>Server: <span id="server">Close beta 3</span></div>
+        <div>Bases: <span id="bases-total">-</span></div>
+        <div>Last update: <span id="last-update">-</span></div>
         <p>Use Google Chrome for best performance</p>
     </div>
 
