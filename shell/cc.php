@@ -40,13 +40,20 @@ class cc
     }
 }
 
-cc::$ses = "d9dfae24-a5a4-4df0-841e-b4119f2ac723";
+if(!isset($argv[1])){
+	print_r("Hash needed!!!");
+	exit(0);
+}
+cc::$ses = $argv[1];
 
 $last = cc::getData('RankingGetCount', array(
     "view" => 0,
     "rankingType" => 0)) - 1;
 
-
+if($last <0){
+print_r("Wrong hash!!!");
+exit(0);
+}
 $step = 1000;
 $cur = 0;
 print_r("Total: $last\r\n");

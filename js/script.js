@@ -10,7 +10,6 @@ var map = {
         map.selected = {};
     },
     draw:function () {
-        $("#pop").popover('hide');
         map.v.clearRect(0, 0, 1000, 1000);
         map.drawGrid();
         map.drawBases();
@@ -73,6 +72,9 @@ var map = {
             if (typeof map.selected[base.an] != 'undefined') {
                 color = map.selected[base.an];
             }
+            if (map.s && map.s.an == base.an) {
+                color = "black";
+            }
 
             if (base.dx > 1000 || base.dy > 1000 || base.dx < 0 || base.dy < 0) {
                 continue;
@@ -106,6 +108,7 @@ var map = {
         map.img = map.v.getImageData(map.ox, map.oy, map.getScale() * 1000, map.getScale() * 1000);
     },
     dragStart:function (e) {
+        $("#pop").popover('hide');
         map.d = true;
         map.dx0 = e.pageX;
         map.dy0 = e.pageY;
@@ -114,14 +117,14 @@ var map = {
         map.dyr0 = e.pageY;
     },
     tooltip:function (b) {
-        $("#pop").css({
-//            width:map.z + 4 + "px",
-//            height:map.z + 4 + "px",
-            top:b.dy,
-            left:b.dx
-        });
-        $("#pop").attr("data-content", b.bn)
-        $("#pop").attr("data-original-title", "Player: " + b.n + "<br />Score: " + b.p + "<br />Alliance: " + b.an + "<br />x:" + b.x + ", y:" + b.y)
+        $("#pop")
+            .css({
+                top:b.dy,
+                left:b.dx
+            })
+            .attr("data-content", "Player: " + b.n + "<br />Score: " + b.p + "<br />Alliance: " + $("[data-name=" + b.an + "]").html() + "<br />x:" + b.x + ", y:" + b.y)
+            .attr("data-original-title", b.bn)
+            .popover("show");
     },
     mousemove:function (e) {
         if (!map.d) {
@@ -130,16 +133,16 @@ var map = {
                 if (Math.sqrt(Math.pow(e.pageX - this.dx, 2) + Math.pow(e.pageY - this.dy, 2)) <= this.r) {
                     hovered = true;
                     if (map.s != this) {
+                        map.s = this;
                         map.tooltip(this);
-                        $("#pop").popover("show")
+                        map.draw();
                     }
-                    map.s = this;
                     return false;
                 }
             });
             if (!hovered) {
                 map.s = null;
-                $("#pop").popover('hide');
+                map.draw();
             }
         } else {
             dx = e.pageX;
@@ -178,7 +181,6 @@ var map = {
             if (this.n == n) {
                 map.scrollTo(map.getScale() * this.x, map.getScale() * this.y);
                 map.tooltip(this);
-                $("#pop").popover('show');
                 return false;
             }
         });
@@ -192,12 +194,14 @@ var map = {
 
 
 $(document).ready(function () {
+
     bases = data.bases;
     $("#last-update").html(data.updated);
     $("#bases-total").html(bases.length);
     map.init($("canvas")[0].getContext("2d"), 1);
     map.show();
     $("#pop").popover('hide');
+
     $("#zoom-in").click(function () {
         changeZoom(++zoom);
     });
@@ -251,7 +255,7 @@ $(document).ready(function () {
     });
     $("#pop").popover({
         placement:"top",
-        trigger: "manual"
+        trigger:"manual"
 
     });
 });
