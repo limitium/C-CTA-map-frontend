@@ -40,9 +40,9 @@ class cc
     }
 }
 
-if(!isset($argv[1])){
-	print_r("Hash needed!!!");
-	exit(0);
+if (!isset($argv[1])) {
+    print_r("Hash needed!!!");
+    exit(0);
 }
 cc::$ses = $argv[1];
 
@@ -50,9 +50,16 @@ $last = cc::getData('RankingGetCount', array(
     "view" => 0,
     "rankingType" => 0)) - 1;
 
-if($last <0){
-print_r("Wrong hash!!!");
-exit(0);
+if ($last < 0) {
+    print_r("Wrong hash!!!");
+    exit(0);
+}
+$dataPath = dirname(__FILE__) . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "data" . DIRECTORY_SEPARATOR;
+$users = array();
+foreach (scandir($dataPath) as $f) {
+    if (!in_array($f, array('.', ".."))) {
+        unlink($dataPath . $f);
+    }
 }
 $step = 1000;
 $cur = 0;
@@ -83,8 +90,8 @@ while ($cur < $last) {
         }
     }
 
+    file_put_contents($dataPath . $cur, "<?php return " . var_export($users, true) . ";");
     $cur = $next;
-    file_put_contents("c:\\cc" . $cur, "<?php return " . var_export($users, true) . ";");
 }
 
 
