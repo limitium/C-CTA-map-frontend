@@ -249,7 +249,7 @@ $(document).ready(function () {
 
     var span = $('.zoom-lvl');
 
-    $("form").submit(function () {
+    $("form.form-search").submit(function () {
         map.search($("input").val());
         return false;
     });
