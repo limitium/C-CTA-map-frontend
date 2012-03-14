@@ -13,6 +13,7 @@ var map = {
         map.v.clearRect(0, 0, 1000, 1000);
         map.drawGrid();
         map.drawBases();
+        map.changeHash(map.getScale());
     },
     drawXLine:function (x, scale, maxY) {
         map.v.moveTo(map.ox + scale * x * 100, map.oy);
@@ -99,6 +100,7 @@ var map = {
             map.oy = 0;
         }
         map.show();
+        $("#pop").popover('hide');
     },
     show:function () {
         map.draw();
@@ -179,7 +181,7 @@ var map = {
     },
     search:function (n) {
         $.each(bases, function () {
-            if (this.n == n) {
+            if (this.n.match(n)) {
                 map.scrollTo(map.getScale() * this.x, map.getScale() * this.y);
                 map.tooltip(this);
                 return false;
@@ -190,25 +192,19 @@ var map = {
         map.ox = -x + 1000 / 2;
         map.oy = -y + 1000 / 2;
         map.draw();
+    },
+    changeHash:function (scale) {
+        location.hash = Math.round((1000 / 2 - map.ox) / scale) + ":" + Math.round((1000 / 2 - map.oy ) / scale) + "-" + map.z;
     }
+
 }
 
 
 $(document).ready(function () {
 
+    var colors = [], zoom = 1, zooming = false, i = 0, span = $('.zoom-lvl');
     bases = data.bases;
-    $("#last-update").html(data.updated);
-    $("#bases-total").html(bases.length);
-    map.init($("canvas")[0].getContext("2d"), 1);
-    map.show();
-    $("#pop").popover('hide');
 
-    $("#zoom-in").click(function () {
-        changeZoom(++zoom);
-    });
-    $("#zoom-out").click(function () {
-        changeZoom(--zoom);
-    });
     var changeZoom = function (zoom) {
         if (zoom <= 0) {
             zoom = 1;
@@ -217,11 +213,38 @@ $(document).ready(function () {
         map.setZoom(zoom);
         span.html(zoom);
     }
+
+    $("#last-update").html(data.updated);
+    $("#bases-total").html(bases.length);
+
+    map.init($("canvas")[0].getContext("2d"), 1);
+
+    if (location.hash) {
+        try {
+            var xyz = location.hash.slice(1).split("-"), xy = xyz[0].split(":");
+            if (typeof xyz[1] != 'undefined') {
+                changeZoom(xyz[1]);
+            }
+            map.scrollTo(map.getScale() * xy[0], map.getScale() * xy[1]);
+        } catch (e) {
+            console.log(e);
+        }
+    }
+    map.show();
+
+    $("#pop").popover('hide');
+
+    $("#zoom-in").click(function () {
+        changeZoom(++zoom);
+    });
+    $("#zoom-out").click(function () {
+        changeZoom(--zoom);
+    });
+
     $("canvas").mousedown(map.dragStart);
     $("canvas").mousemove(map.mousemove);
     $("canvas").mouseup(map.dragEnd);
 
-    var colors = [], zoom = 1, zooming = false, i = 0;
     for (var s = 255; s > 0; s = s - 8) {
         var color = [0, 0, 0];
         color[i % 3] = s;
@@ -248,7 +271,6 @@ $(document).ready(function () {
     $("a[data-name=RussianAllianceN]").trigger("click");
     $("a[data-name=RussianAllianceS]").trigger("click");
 
-    var span = $('.zoom-lvl');
 
     $("form.form-search").submit(function () {
         map.search($("input").val());
