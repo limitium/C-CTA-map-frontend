@@ -120,7 +120,7 @@ var map = {
         $("#pop")
             .css({
                 top:b.dy,
-                left:b.dx
+                left:b.dx + $('canvas').offset().left
             })
             .attr("data-content", "Player: " + b.n + "<br />Score: " + b.p + "<br />Alliance: " + $("[data-name=" + b.an + "]").html() + "<br />x:" + b.x + ", y:" + b.y)
             .attr("data-original-title", b.bn)
@@ -129,8 +129,9 @@ var map = {
     mousemove:function (e) {
         if (!map.d) {
             var hovered = false;
+            var el = e.pageX - $('canvas').offset().left;
             $.each(bases, function () {
-                if (Math.sqrt(Math.pow(e.pageX - this.dx, 2) + Math.pow(e.pageY - this.dy, 2)) <= this.r) {
+                if (Math.sqrt(Math.pow(el - this.dx, 2) + Math.pow(e.pageY - this.dy, 2)) <= this.r) {
                     hovered = true;
                     if (map.s != this) {
                         map.s = this;
