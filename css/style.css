@@ -292,52 +292,80 @@ td { vertical-align: top; }
   h2, h3 { page-break-after: avoid; }
 }
 .menu{
-    background-color: #eee;
+    /*background-color: #eee;*/
+    background-color: transparent;
     display: block;
     margin: 0px;
-    border: 1px solid black;
-    width: 250px;
+    /*border: 1px solid black;*/
+    width: 200px;
     position: fixed;
     cursor: default;
-    opacity: 0.7;
+    /*opacity: 0.7;*/
     padding: 0px;
 }
-.menuhider{
-    display: block;
-    margin: 0px;
-    top: 0px;
-    right: 0px;
-    height: 500px;
-    opacity: 0.7;
-    width: 400px;
-    position: fixed;
-    cursor: default;
-    z-index: 100;
-}
+
+
 .alliance{
     top: 0px;
     right: 0px;
 }
 .info{
+    cursor: default;
+    position: fixed;
     padding: 5px;
     top: 0px;
     left: 0px;
+    -moz-user-select: -moz-none;
+    background-image: url("../img/info.png");
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    height: 60px;
+    width: 250px;
+    -moz-user-select: -moz-none;
+    color: #CCCCCC;
+    font-family: "Segoe UI",Tahoma,"Liberation Sans",Arial;
+    font-size: 10px;
 }
 .actions{
     padding: 5px;
+    background-color: #CDD6DD;
+        opacity: 0.8;
+    margin-left: 5px;
 }
+.menu-bottom{
+    -moz-user-select: -moz-none;
+    background-image: url("../img/menu-bottom.png");
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    height: 21px;
+    width: 210px;
+}
+.menu-top{
+    -moz-user-select: -moz-none;
+    background-image: url("../img/menu-top.png");
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    height: 20px;
+    width: 210px;
+}
+
 label{
     display: block !important;
     margin-top: 5px
 }
+.search-query{
+    width: 115px;
+}
 ul {
     list-style: none;
-    margin: 5px 0 0 0;
-    border-top: 1px solid black;
+    margin: 0 0 0 0;
     padding: 5px;
-    height: 400px;
+    height: 300px;
     overflow-y: auto;
     overflow-x: hidden;
+    background-color: #CDD6DD;
+    opacity: 0.8;
+    margin-left: 5px;
 }
 a{
     font-size: 12px;
@@ -376,10 +404,11 @@ a.selected{
     /*font-size: 6px;*/
     /*opacity: 1;*/
 }
-html{
+html,body{
     cursor: pointer;
-    /*background: url("../img/bg.png") repeat scroll left bottom transparent*/
-
+    background-image: url("../img/bg2.png");
+    background-position: 0 0;
+    background-repeat: repeat;
 }
 #pop{
     z-index: 100;
@@ -391,8 +420,12 @@ html{
     width: 1px;
 }
 canvas{
+    margin: 0 auto;
+    display: block;
     z-index: -100;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
+    /*background-color: #020B10;*/
+    background-color: #ffffff;
     /*webkit-box-shadow:0 0 14px black;*/
      /*-moz-box-shadow:0 0 14px black;*/
      /*box-shadow:0 0 14px black;*/

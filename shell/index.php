@@ -46,14 +46,14 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
     <canvas width="1000px" height="1000px">
 
     </canvas>
-    <div class="menu info well">
+    <div class="info">
         <div>Server: <span id="server">Close beta 3</span></div>
         <div>Bases: <span id="bases-total">-</span></div>
         <div>Last update: <span id="last-update">-</span></div>
         <p>Use Google Chrome for best performance</p>
     </div>
 
-    <div class="menu alliance well">
+    <div class="menu alliance">
         <div class="actions">
             <button class="btn btn-primary" id="zoom-out"><i class="icon-minus"></i></button>
             <button class="btn btn-primary" id="zoom-in"><i class="icon-plus"></i></button>
@@ -65,11 +65,14 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
                 <button type="submit" class="btn"><i class="icon-search"></i></button>
             </form>
         </div>
+        <div class="menu-bottom"></div>
+        <div class="menu-top"></div>
         <ul class="">
             <?php foreach ($data[0] as $an => $c): ?>
             <?php echo "<li><a href='' data-name='$an'>$an ($c)</a></li>"; ?>
             <?php endforeach; ?>
         </ul>
+        <div class="menu-bottom"></div>
     </div>
 </div>
 
