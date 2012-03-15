@@ -329,8 +329,8 @@ td { vertical-align: top; }
 .actions{
     padding: 5px;
     background-color: #CDD6DD;
-        opacity: 0.8;
-    margin-left: 5px;
+    opacity: 0.8;
+    margin-left: 6px;
 }
 .menu-bottom{
     -moz-user-select: -moz-none;
@@ -354,7 +354,7 @@ label{
     margin-top: 5px
 }
 .search-query{
-    width: 115px;
+    width: 114px;
 }
 ul {
     list-style: none;
@@ -365,7 +365,7 @@ ul {
     overflow-x: hidden;
     background-color: #CDD6DD;
     opacity: 0.8;
-    margin-left: 5px;
+    margin-left: 6px;
 }
 a{
     font-size: 12px;
@@ -419,6 +419,9 @@ html,body{
     height: 1px;
     width: 1px;
 }
+#map-image{
+    display: none;
+}
 canvas{
     margin: 0 auto;
     display: block;
@@ -426,6 +429,7 @@ canvas{
     /*border: 1px solid black;*/
     /*background-color: #020B10;*/
     background-color: #ffffff;
+    background-color: #07292E;
     /*webkit-box-shadow:0 0 14px black;*/
      /*-moz-box-shadow:0 0 14px black;*/
      /*box-shadow:0 0 14px black;*/
