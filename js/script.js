@@ -177,7 +177,7 @@ var map = {
                 top:b.dy,
                 left:b.dx + $('canvas').offset().left
             })
-            .attr("data-content", "Player: " + b.n + "<br />Score: " + b.p + "<br />Alliance: " + $("[data-name=" + b.an + "]").html() + "<br />x:" + b.x + ", y:" + b.y)
+            .attr("data-content", "Player: " + b.n + "<br />Score: " + b.p + "<br />Alliance: " + $("[data-name=" + b.a + "]").html() + "<br />x:" + b.x + ", y:" + b.y)
             .attr("data-original-title", b.bn)
             .popover("show");
     },
@@ -320,7 +320,7 @@ $(document).ready(function () {
 
     $alliances = "";
     $.each(data.alliances, function () {
-        $alliances += "<li><a href='' data-name='" + this.a + "'>" + this.an + "(" + this.c + ")</a></li>";
+        $alliances += "<li><a href='' data-name='" + this.a + "'>" + this.an + " (" + this.c + ")</a></li>";
     });
 
     $("ul.alliances").html($alliances);
