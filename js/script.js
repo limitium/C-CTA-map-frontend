@@ -67,14 +67,14 @@ var map = {
         map.v.moveTo(map.ox + scale * x * 100, map.oy);
         map.v.lineTo(map.ox + scale * x * 100, maxY);
         map.v.lineWidth = 1;
-        map.v.strokeStyle = "#eee"; // line color;
+        map.v.strokeStyle = "rgba(220,220,220,0.1)"; // line color;
         map.v.stroke();
     },
     drawYLine:function (y, scale, maxX) {
         map.v.moveTo(map.ox, map.oy + scale * y * 100);
         map.v.lineTo(maxX, map.oy + scale * y * 100);
         map.v.lineWidth = 1;
-        map.v.strokeStyle = "#eee"; // line color;
+        map.v.strokeStyle = "rgba(220,220,220,0.1)"; // line color;
         map.v.stroke();
     },
     drawGrid:function () {
