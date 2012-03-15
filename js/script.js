@@ -2,18 +2,66 @@ var map = {
     init:function (v, z) {
         map.v = v;
         map.z = z;
-        map.t = new Date().getTime();
         map.d = false;
         map.ox = 0;
         map.oy = 0;
         map.s = null;
         map.selected = {};
+        map.mapImage = $("#map-image")[0];
     },
     draw:function () {
         map.v.clearRect(0, 0, 1000, 1000);
+        map.drawBG();
         map.drawGrid();
         map.drawBases();
         map.changeHash(map.getScale());
+    },
+    drawBG:function () {
+
+//        var scale = map.getScale(),
+//            sx = Math.max(0 - map.ox + 125, 0),
+//            sy = Math.max(0 - map.oy + 125, 0),
+//            sw = Math.min((1000 - Math.abs(map.ox) + 125), 1000),
+//            sh = Math.min((1000 - Math.abs(map.oy) + 125), 1000),
+//
+//            dx = Math.abs(Math.min(125 - map.ox, 0)),
+//            dy = Math.abs(Math.min(125 - map.oy, 0)),
+//            dw = Math.min(1000 - Math.abs(map.ox) + 125, 1000),
+//            dh = Math.min(1000 - Math.abs(map.oy) + 125, 1000);
+        var scale = map.getScale(),
+            dx = Math.abs(Math.min(-map.ox, 0)),
+            dy = Math.abs(Math.min(-map.oy, 0)),
+
+            dw = map.ox > 0 ? 1000 - dx : Math.max(1000 * scale + map.ox, 0),
+            dh = map.oy > 0 ? 1000 - dy : Math.max(1000 * scale + map.oy, 0),
+
+            sx = Math.max(0 - map.ox, 0) / scale,
+            sy = Math.max(0 - map.oy, 0) / scale,
+
+            sw = dw / scale,
+            sh = dh / scale;
+
+
+//        console.log("scale:" + scale);
+//        console.log("x:" + map.ox);
+//        console.log("y:" + map.oy);
+//        console.log("sx:" + sx);
+//        console.log("sy:" + sy);
+//        console.log("sw:" + sw);
+//        console.log("sh:" + sh);
+////
+//        console.log("dx:" + dx);
+//        console.log("dy:" + dy);
+//        console.log("dw:" + dw);
+//        console.log("dh:" + dh);
+//        console.log("================================================");
+
+        map.v.drawImage(map.mapImage,
+            sx, sy,
+            sw > 0 ? sw : 0, sh > 0 ? sh : 0,
+            dx, dy,
+            dw > 0 ? dw : 0, dh > 0 ? dh : 0
+        );
     },
     drawXLine:function (x, scale, maxY) {
         map.v.moveTo(map.ox + scale * x * 100, map.oy);
@@ -35,11 +83,16 @@ var map = {
         var maxY = map.oy + scale * 1000;
         for (var i = 0; i < 10; i++) {
             for (var j = 0; j < 10; j++) {
-                var mark = String.fromCharCode(65 + j) + ":" + i;
+                var mark = String.fromCharCode(65 + j) + ":" + i,
+                    markX = map.ox + scale * i * 100 + 50 * scale,
+                    markY = map.oy + scale * j * 100 + 60 * scale;
+                if (markX > 1100 || markY > 1100 || markX < -100 || markY < -100) {
+                    continue;
+                }
                 map.v.font = 40 * scale + "px Calibri";
                 map.v.textAlign = "center";
-                map.v.fillStyle = "#eee";
-                map.v.fillText(mark, map.ox + scale * i * 100 + 50 * scale, map.oy + scale * j * 100 + 60 * scale)
+                map.v.fillStyle = "rgba(220,220,220,0.4)";
+                map.v.fillText(mark, markX, markY)
             }
 
             map.drawXLine(i, scale, maxY);
@@ -64,7 +117,7 @@ var map = {
             a = 2 * Math.PI;
         while (i--) {
             var base = bases[i],
-                color = "#6CB4CC";
+                color = "#87E1FF";
 
             base.dx = map.ox + scale * base.x;
             base.dy = map.oy + scale * base.y;
@@ -143,7 +196,7 @@ var map = {
                     return false;
                 }
             });
-            if (!hovered) {
+            if (!hovered && map.s != null) {
                 map.s = null;
                 map.draw();
             }
@@ -165,11 +218,11 @@ var map = {
     },
     dragEnd:function (e) {
         map.d = false;
-        if (map.getScale() > 1) {
-            map.show();
-        } else {
-            map.draw();
-        }
+//        if (map.getScale() > 1) {
+        map.show();
+//        } else {
+//            map.draw();
+//        }
     },
     selectAlliance:function (a) {
         map.selected[a.an] = a.c;
@@ -194,7 +247,7 @@ var map = {
         map.draw();
     },
     changeHash:function (scale) {
-        location.hash = Math.round((1000 / 2 - map.ox) / scale) + ":" + Math.round((1000 / 2 - map.oy ) / scale) + "-" + map.z;
+        location.hash = Math.round((1000 / 2 - map.ox) / scale) + ":" + Math.round((1000 / 2 - map.oy ) / scale) + "/" + map.z;
     }
 
 }
@@ -221,9 +274,10 @@ $(document).ready(function () {
 
     if (location.hash) {
         try {
-            var xyz = location.hash.slice(1).split("-"), xy = xyz[0].split(":");
+            var xyz = location.hash.slice(1).split("/"), xy = xyz[0].split(":");
             if (typeof xyz[1] != 'undefined') {
-                changeZoom(xyz[1]);
+                zoom = xyz[1];
+                changeZoom(zoom);
             }
             map.scrollTo(map.getScale() * xy[0], map.getScale() * xy[1]);
         } catch (e) {
