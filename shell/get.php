@@ -14,17 +14,16 @@ $api = new CnCApi($server);
 
 $api->setSession($argv[1]);
 
-//if ($api->isValidSession()) {
+if ($api->isValidSession()) {
+    $grabber = new Grabber($api);
+    $grabber->parse();
+    //    $grabber->load();
+    $grabber->writeData();
 
-$grabber = new Grabber($api);
-//    $grabber->parse();
-$grabber->load();
-$grabber->writeData();
-
-//} else {
-//    print_r("Wrong hash!!!");
-//    exit(0);
-//}
+} else {
+    print_r("Wrong hash!!!");
+    exit(0);
+}
 
 
 

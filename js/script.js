@@ -126,7 +126,7 @@ var map = {
             if (typeof map.selected[base.a] != 'undefined') {
                 color = map.selected[base.a];
             }
-            if (map.s && map.s.an == base.a) {
+            if (map.s && map.s.a == base.a) {
                 color = "black";
             }
 

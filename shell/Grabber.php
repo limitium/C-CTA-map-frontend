@@ -16,7 +16,6 @@ class Grabber
     {
 
         $last = $this->api->getPlayerCount();
-
         $step = 1000;
         $cur = 0;
         print_r("Total: $last\r\n");
