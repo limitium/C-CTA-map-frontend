@@ -326,11 +326,46 @@ td { vertical-align: top; }
     font-family: "Segoe UI",Tahoma,"Liberation Sans",Arial;
     font-size: 10px;
 }
+.servers{
+    cursor: default;
+    position: fixed;
+    padding: 5px;
+    top: 70px;
+    left: 0px;
+    -moz-user-select: -moz-none;
+    -moz-user-select: -moz-none;
+    font-family: "Segoe UI",Tahoma,"Liberation Sans",Arial;
+    font-size: 10px;
+}
+.servers .menu-btn{
+    background: url("../img/menu-btn.png") no-repeat scroll 0 0 transparent;
+    cursor: pointer;
+    height: 37px;
+    margin: 5px 20px 0 0px;
+    width: 130px;
+}
+.servers .menu-btn:hover{
+    background-position: 0 -37px;
+}
+.servers a{
+    color: #B1FF20;
+    display: block;
+    font-size: 12px;
+    line-height: 30px;
+    margin: 0 0 0 20px;
+    outline: medium none;
+    text-align: left;
+    text-decoration: none;
+    width: 130px;
+}
 .actions{
     padding: 5px;
     background-color: #CDD6DD;
-        opacity: 0.8;
+    opacity: 0.8;
     margin-left: 5px;
+    background-image: url("../img/menu-bg.png");
+    background-position: 0 0;
+    background-repeat: repeat;
 }
 .menu-bottom{
     -moz-user-select: -moz-none;
@@ -366,6 +401,9 @@ ul {
     background-color: #CDD6DD;
     opacity: 0.8;
     margin-left: 5px;
+    background-image: url("../img/menu-bg.png");
+    background-position: 0 0;
+    background-repeat: repeat;
 }
 a{
     font-size: 12px;

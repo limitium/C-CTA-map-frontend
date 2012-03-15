@@ -70,10 +70,10 @@ var map = {
             base.dy = map.oy + scale * base.y;
             base.r = r;
 
-            if (typeof map.selected[base.an] != 'undefined') {
-                color = map.selected[base.an];
+            if (typeof map.selected[base.a] != 'undefined') {
+                color = map.selected[base.a];
             }
-            if (map.s && map.s.an == base.an) {
+            if (map.s && map.s.an == base.a) {
                 color = "black";
             }
 
@@ -253,6 +253,23 @@ $(document).ready(function () {
         i++;
     }
 
+
+    $("form.form-search").submit(function () {
+        map.search($("input").val());
+        return false;
+    });
+    $("#pop").popover({
+        placement:"top",
+        trigger:"manual"
+
+    });
+
+    $alliances = "";
+    $.each(data.alliances, function () {
+        $alliances += "<li><a href='' data-name='" + this.a + "'>" + this.an + "(" + this.c + ")</a></li>";
+    });
+
+    $("ul.alliances").html($alliances);
     $("li a").toggle(function () {
         var link = $(this);
         var scale = zoom == 1 ? 1 : zoom * 1.1;
@@ -267,18 +284,11 @@ $(document).ready(function () {
         map.deSelectAlliance(link.attr("data-name"));
         return false;
     });
-    $("a[data-name=RusssianAllianceW]").trigger("click");
-    $("a[data-name=RussianAllianceN]").trigger("click");
-    $("a[data-name=RussianAllianceS]").trigger("click");
-
-
-    $("form.form-search").submit(function () {
-        map.search($("input").val());
+    $("a[data-name=174]").trigger("click");
+    $("a[data-name=702]").trigger("click");
+    $("a[data-name=1322]").trigger("click");
+    $(".menu-btn a").click(function () {
+        alert("Soon bro :)");
         return false;
-    });
-    $("#pop").popover({
-        placement:"top",
-        trigger:"manual"
-
-    });
+    })
 });
