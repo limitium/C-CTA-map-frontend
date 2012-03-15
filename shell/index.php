@@ -81,7 +81,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
 <!-- JavaScript at the bottom for fast page loading -->
 
 <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
-<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="/js/libs/jquery-1.7.1.min.js"><\/script>')</script>
 
 <!-- scripts concatenated and minified via build script -->
@@ -92,37 +92,37 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
 
 <!-- Asynchronous Google Analytics snippet. Change UA-XXXXX-X to be your site's ID.
 mathiasbynens.be/notes/async-analytics-snippet -->
-<!--<script>-->
-<!--    var _gaq = [-->
-<!--        ['_setAccount', 'UA-29659292-1'],-->
-<!--        ['_trackPageview']-->
-<!--    ];-->
-<!--    (function (d, t) {-->
-<!--        var g = d.createElement(t), s = d.getElementsByTagName(t)[0];-->
-<!--        g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';-->
-<!--        s.parentNode.insertBefore(g, s)-->
-<!--    }(document, 'script'));-->
-<!--</script>-->
-<!--<script type="text/javascript">-->
-<!--    reformal_wdg_domain    = "c-c-map";-->
-<!--    reformal_wdg_mode    = 0;-->
-<!--    reformal_wdg_title   = "C&C map";-->
-<!--    reformal_wdg_ltitle  = "Leave feedback";-->
-<!--    reformal_wdg_lfont   = "";-->
-<!--    reformal_wdg_lsize   = "";-->
-<!--    reformal_wdg_color   = "#ff0088";-->
-<!--    reformal_wdg_bcolor  = "#516683";-->
-<!--    reformal_wdg_tcolor  = "#FFFFFF";-->
-<!--    reformal_wdg_align   = "left";-->
-<!--    reformal_wdg_waction = 0;-->
-<!--    reformal_wdg_vcolor  = "#9FCE54";-->
-<!--    reformal_wdg_cmline  = "#E0E0E0";-->
-<!--    reformal_wdg_glcolor  = "#105895";-->
-<!--    reformal_wdg_tbcolor  = "#FFFFFF";-->
-<!---->
-<!--    reformal_wdg_bimage = "8489db229aa0a66ab6b80ebbe0bb26cd.png";-->
-<!---->
-<!--</script>-->
-<!--<script type="text/javascript" language="JavaScript" src="http://idea.informer.com/tab6.js?domain=c-c-map"></script><noscript><a href="http://c-c-map.idea.informer.com">C&C map feedback </a> <a href="http://idea.informer.com"><img src="http://widget.idea.informer.com/tmpl/images/widget_logo.jpg" /></a></noscript>-->
+<script>
+    var _gaq = [
+        ['_setAccount', 'UA-29659292-1'],
+        ['_trackPageview']
+    ];
+    (function (d, t) {
+        var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+        g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g, s)
+    }(document, 'script'));
+</script>
+<script type="text/javascript">
+    reformal_wdg_domain    = "c-c-map";
+    reformal_wdg_mode    = 0;
+    reformal_wdg_title   = "C&C map";
+    reformal_wdg_ltitle  = "Leave feedback";
+    reformal_wdg_lfont   = "";
+    reformal_wdg_lsize   = "";
+    reformal_wdg_color   = "#ff0088";
+    reformal_wdg_bcolor  = "#516683";
+    reformal_wdg_tcolor  = "#FFFFFF";
+    reformal_wdg_align   = "left";
+    reformal_wdg_waction = 0;
+    reformal_wdg_vcolor  = "#9FCE54";
+    reformal_wdg_cmline  = "#E0E0E0";
+    reformal_wdg_glcolor  = "#105895";
+    reformal_wdg_tbcolor  = "#FFFFFF";
+
+    reformal_wdg_bimage = "8489db229aa0a66ab6b80ebbe0bb26cd.png";
+
+</script>
+<script type="text/javascript" language="JavaScript" src="http://idea.informer.com/tab6.js?domain=c-c-map"></script><noscript><a href="http://c-c-map.idea.informer.com">C&C map feedback </a> <a href="http://idea.informer.com"><img src="http://widget.idea.informer.com/tmpl/images/widget_logo.jpg" /></a></noscript>
 </body>
 </html>
