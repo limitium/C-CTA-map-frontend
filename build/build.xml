@@ -362,7 +362,8 @@
                    -htmlclean,
                    -imagespng,
                    -imagesjpg,
-                   -copy"/>
+                   -copy,
+				   -json.build"/>
 
   <!-- Target: minify -->
   <target name="-minify.dev"

@@ -89,11 +89,10 @@ class Grabber
             'alliances' => $alliances
         );
 
-        $path = dirname(__FILE__) . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "js" . DIRECTORY_SEPARATOR;
-        $dataFile = $path . "data_" . $this->api->getServer() . ".js";
-        @rename($dataFile, $path . ".." . DIRECTORY_SEPARATOR . "data".DIRECTORY_SEPARATOR."data_" . $this->api->getServer() . "_" . date("Y-m-d_H-i-s") . ".js");
-        file_put_contents($dataFile, "var data = " . json_encode($bases) . ";");
-
+        $path = dirname(__FILE__) . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "js" . DIRECTORY_SEPARATOR . "cncdata" . DIRECTORY_SEPARATOR;
+        $dataFile = $path . "data_" . $this->api->getServer() . ".json";
+        @rename($dataFile, $path . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "data" . DIRECTORY_SEPARATOR . "data_" . $this->api->getServer() . "_" . date("Y-m-d_H-i-s") . ".json");
+        file_put_contents($dataFile, json_encode($bases));
     }
 
     public static function sort($a, $b)

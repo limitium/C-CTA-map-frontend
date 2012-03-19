@@ -8,9 +8,13 @@ if (!isset($argv[1])) {
     exit(0);
 }
 
-$server = isset($argv[2]) ? $argv[2] + 1 : 4;
+if (!isset($argv[2])) {
+    print_r("Server needed!!!");
+    exit(0);
+}
 
-$api = new CnCApi($server);
+
+$api = new CnCApi($argv[2]);
 
 $api->setSession($argv[1]);
 

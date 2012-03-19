@@ -14,10 +14,10 @@ class CnCApi
     {
         $ch = curl_init();
 
-        $host = "prodgame0" . $this->server . ".alliances.commandandconquer.com";
-        $url = "http://$host/" . (8 + $this->server);
+        $host = "prodgame0" . ($this->server + 1) . ".alliances.commandandconquer.com";
+        $url = "http://$host/" . (9 + $this->server);
 
-        curl_setopt($ch, CURLOPT_URL, $url. "/Presentation/Service.svc/ajaxEndpoint/" . $method);
+        curl_setopt($ch, CURLOPT_URL, $url . "/Presentation/Service.svc/ajaxEndpoint/" . $method);
 
         curl_setopt($ch, CURLOPT_TIMEOUT, 15);
 

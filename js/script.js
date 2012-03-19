@@ -1,13 +1,14 @@
 var map = {
-    init:function (v, z) {
+    init:function (v) {
         map.v = v;
-        map.z = z;
+        map.z = 1;
         map.d = false;
         map.ox = 0;
         map.oy = 0;
         map.s = null;
         map.selected = {};
         map.mapImage = $("#map-image")[0];
+        map.bases = []
     },
     draw:function () {
         map.v.clearRect(0, 0, 1000, 1000);
@@ -112,11 +113,11 @@ var map = {
     },
     drawBases:function () {
         var scale = map.getScale(),
-            i = bases.length,
+            i = map.bases.length,
             r = scale * 1,
             a = 2 * Math.PI;
         while (i--) {
-            var base = bases[i],
+            var base = map.bases[i],
                 color = "#87E1FF";
 
             base.dx = map.ox + scale * base.x;
@@ -185,7 +186,7 @@ var map = {
         if (!map.d) {
             var hovered = false;
             var el = e.pageX - $('canvas').offset().left;
-            $.each(bases, function () {
+            $.each(map.bases, function () {
                 if (Math.sqrt(Math.pow(el - this.dx, 2) + Math.pow(e.pageY - this.dy, 2)) <= this.r) {
                     hovered = true;
                     if (map.s != this) {
@@ -233,7 +234,7 @@ var map = {
         map.show();
     },
     search:function (n) {
-        $.each(bases, function () {
+        $.each(map.bases, function () {
             if (this.n.match(n)) {
                 map.scrollTo(map.getScale() * this.x, map.getScale() * this.y);
                 map.tooltip(this);
@@ -248,15 +249,28 @@ var map = {
     },
     changeHash:function (scale) {
         location.hash = Math.round((1000 / 2 - map.ox) / scale) + ":" + Math.round((1000 / 2 - map.oy ) / scale) + "/" + map.z;
+    },
+    loadBases:function (bases) {
+        map.bases = bases;
+        map.show();
     }
-
 }
 
 
 $(document).ready(function () {
 
     var colors = [], zoom = 1, zooming = false, i = 0, span = $('.zoom-lvl');
-    bases = data.bases;
+
+    map.init($("canvas")[0].getContext("2d"));
+
+
+    for (var s = 255; s > 0; s = s - 8) {
+        var color = [0, 0, 0];
+        color[i % 3] = s;
+        color[i % 2] = s;
+        colors.push("rgb(" + color.join(",") + ")");
+        i++;
+    }
 
     var changeZoom = function (zoom) {
         if (zoom <= 0) {
@@ -267,26 +281,15 @@ $(document).ready(function () {
         span.html(zoom);
     }
 
-    $("#last-update").html(data.updated);
-    $("#bases-total").html(bases.length);
 
-    map.init($("canvas")[0].getContext("2d"), 1);
-
-    if (location.hash) {
-        try {
-            var xyz = location.hash.slice(1).split("/"), xy = xyz[0].split(":");
-            if (typeof xyz[1] != 'undefined') {
-                zoom = xyz[1];
-                changeZoom(zoom);
-            }
-            map.scrollTo(map.getScale() * xy[0], map.getScale() * xy[1]);
-        } catch (e) {
-            console.log(e);
-        }
-    }
-    map.show();
-
-    $("#pop").popover('hide');
+    $("form.form-search").submit(function () {
+        map.search($("input").val());
+        return false;
+    });
+    $("#pop").popover({
+        placement:"right",
+        trigger:"manual"
+    });
 
     $("#zoom-in").click(function () {
         changeZoom(++zoom);
@@ -299,50 +302,52 @@ $(document).ready(function () {
     $("canvas").mousemove(map.mousemove);
     $("canvas").mouseup(map.dragEnd);
 
-    for (var s = 255; s > 0; s = s - 8) {
-        var color = [0, 0, 0];
-        color[i % 3] = s;
-        color[i % 2] = s;
-        colors.push("rgb(" + color.join(",") + ")");
-        i++;
-    }
-
-
-    $("form.form-search").submit(function () {
-        map.search($("input").val());
-        return false;
-    });
-    $("#pop").popover({
-        placement:"top",
-        trigger:"manual"
-
-    });
-
-    $alliances = "";
-    $.each(data.alliances, function () {
-        $alliances += "<li><a href='' data-name='" + this.a + "'>" + this.an + " (" + this.c + ")</a></li>";
-    });
-
-    $("ul.alliances").html($alliances);
-    $("li a").toggle(function () {
-        var link = $(this);
-        var scale = zoom == 1 ? 1 : zoom * 1.1;
-        var color = colors[$("li a.selected").length % colors.length];
-        link.addClass("selected").css({"color":color });
-        map.selectAlliance({an:link.attr("data-name"), c:color});
-        return false;
-    }, function () {
-        var link = $(this);
-        var scale = zoom == 1 ? 1 : zoom;
-        link.removeClass("selected").css({"color":"" });
-        map.deSelectAlliance(link.attr("data-name"));
-        return false;
-    });
-    $("a[data-name=174]").trigger("click");
-    $("a[data-name=702]").trigger("click");
-    $("a[data-name=1322]").trigger("click");
     $(".menu-btn a").click(function () {
-        alert("Soon bro :)");
+        var a = $(this);
+        $.getJSON($(this).attr("data-file"), function (data) {
+            $("#server").html(a.html());
+            $("#last-update").html(data.updated);
+            $("#bases-total").html(data.bases.length);
+            $alliances = "";
+            $.each(data.alliances, function () {
+                $alliances += "<li><a href='' data-name='" + this.a + "'>" + this.an + " (" + this.c + ")</a></li>";
+            });
+
+            $("ul.alliances").html($alliances);
+            $("li a").toggle(function () {
+                var link = $(this);
+                var scale = zoom == 1 ? 1 : zoom * 1.1;
+                var color = colors[$("li a.selected").length % colors.length];
+                link.addClass("selected").css({"color":color });
+                map.selectAlliance({an:link.attr("data-name"), c:color});
+                return false;
+            }, function () {
+                var link = $(this);
+                var scale = zoom == 1 ? 1 : zoom;
+                link.removeClass("selected").css({"color":"" });
+                map.deSelectAlliance(link.attr("data-name"));
+                return false;
+            });
+            map.loadBases(data.bases);
+        });
         return false;
-    })
+    });
+    $("#pop").popover('hide');
+
+//    if (location.hash) {
+//         try {
+//             var xyz = location.hash.slice(1).split("/"), xy = xyz[0].split(":");
+//             if (typeof xyz[1] != 'undefined') {
+//                 zoom = xyz[1];
+//                 changeZoom(zoom);
+//             }
+//             map.scrollTo(map.getScale() * xy[0], map.getScale() * xy[1]);
+//         } catch (e) {
+//             console.log(e);
+//         }
+//     }
+//    $("a[data-name=174]").trigger("click");
+//    $("a[data-name=702]").trigger("click");
+//    $("a[data-name=1322]").trigger("click");
+
 });
