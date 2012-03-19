@@ -10,6 +10,7 @@ var map = {
         map.mapImage = $("#map-image")[0];
         map.bases = [];
         map.server = 0;
+        map.colors =[];
     },
     draw:function () {
         map.v.clearRect(0, 0, 1000, 1000);
@@ -265,16 +266,15 @@ var map = {
             });
 
             $("ul.alliances").html($alliances);
+
             $("li a").toggle(function () {
                 var link = $(this);
-                var scale = zoom == 1 ? 1 : zoom * 1.1;
-                var color = colors[$("li a.selected").length % colors.length];
+                var color = map.colors[$("li a.selected").length % map.colors.length];
                 link.addClass("selected").css({"color":color });
                 map.selectAlliance({an:link.attr("data-name"), c:color});
                 return false;
             }, function () {
                 var link = $(this);
-                var scale = zoom == 1 ? 1 : zoom;
                 link.removeClass("selected").css({"color":"" });
                 map.deSelectAlliance(link.attr("data-name"));
                 return false;
@@ -291,7 +291,7 @@ var map = {
 
 $(document).ready(function () {
 
-    var colors = [], zoom = 1, zooming = false, i = 0, span = $('.zoom-lvl');
+    var zoom = 1, zooming = false, i = 0, span = $('.zoom-lvl');
 
     map.init($("canvas")[0].getContext("2d"));
 
@@ -300,7 +300,7 @@ $(document).ready(function () {
         var color = [0, 0, 0];
         color[i % 3] = s;
         color[i % 2] = s;
-        colors.push("rgb(" + color.join(",") + ")");
+        map.colors.push("rgb(" + color.join(",") + ")");
         i++;
     }
 
