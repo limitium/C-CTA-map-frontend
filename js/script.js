@@ -327,34 +327,34 @@ $(document).ready(function () {
         changeZoom(++zoom);
     });
     $("#zoom-out").click(function () {
-        changeZoom(--zoom);
+    changeZoom(--zoom);
+});
+
+$("canvas").mousedown(map.dragStart);
+$("canvas").mousemove(map.mousemove);
+$("canvas").mouseup(map.dragEnd);
+
+$(".menu-btn a").click(function () {
+    map.loadData($(this).attr("data-server"), function () {
     });
+    return false;
+});
+$("#pop").popover('hide');
 
-    $("canvas").mousedown(map.dragStart);
-    $("canvas").mousemove(map.mousemove);
-    $("canvas").mouseup(map.dragEnd);
-
-    $(".menu-btn a").click(function () {
-        map.loadData($(this).attr("data-server"), function () {
-        });
-        return false;
-    });
-    $("#pop").popover('hide');
-
-    if (location.hash) {
-        try {
-            var xyzs = xyz = location.hash.slice(1).split("s"), xyz = xyzs[0].split("/"), xy = xyz[0].split(":");
-            if (typeof xyz[1] != 'undefined') {
-                zoom = xyz[1];
-                changeZoom(zoom);
-            }
-            map.loadData(xyzs[1], function () {
-                map.scrollTo(map.getScale() * xy[0], map.getScale() * xy[1]);
-            });
-        } catch (e) {
-            console.log(e);
+if (location.hash) {
+    try {
+        var xyzs = xyz = location.hash.slice(1).split("s"), xyz = xyzs[0].split("/"), xy = xyz[0].split(":");
+        if (typeof xyz[1] != 'undefined') {
+            zoom = xyz[1];
+            changeZoom(zoom);
         }
+        map.loadData(xyzs[1], function () {
+            map.scrollTo(map.getScale() * xy[0], map.getScale() * xy[1]);
+        });
+    } catch (e) {
+        console.log(e);
     }
+}
 //    $("a[data-name=174]").trigger("click");
 //    $("a[data-name=702]").trigger("click");
 //    $("a[data-name=1322]").trigger("click");
