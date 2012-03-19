@@ -8,7 +8,8 @@ var map = {
         map.s = null;
         map.selected = {};
         map.mapImage = $("#map-image")[0];
-        map.bases = []
+        map.bases = [];
+        map.server = 0;
     },
     draw:function () {
         map.v.clearRect(0, 0, 1000, 1000);
@@ -248,11 +249,42 @@ var map = {
         map.draw();
     },
     changeHash:function (scale) {
-        location.hash = Math.round((1000 / 2 - map.ox) / scale) + ":" + Math.round((1000 / 2 - map.oy ) / scale) + "/" + map.z;
+        location.hash = Math.round((1000 / 2 - map.ox) / scale) + ":" + Math.round((1000 / 2 - map.oy ) / scale) + "/" + map.z + "s" + map.server;
     },
-    loadBases:function (bases) {
-        map.bases = bases;
-        map.show();
+    loadData:function (server, cb) {
+        var a = $("[data-server=" + server + "]"),
+            file = a.attr("data-file");
+        map.server = server;
+        $.getJSON(file, function (data) {
+            $("#server").html(a.html());
+            $("#last-update").html(data.updated);
+            $("#bases-total").html(data.bases.length);
+            $alliances = "";
+            $.each(data.alliances, function () {
+                $alliances += "<li><a href='' data-name='" + this.a + "'>" + this.an + " (" + this.c + ")</a></li>";
+            });
+
+            $("ul.alliances").html($alliances);
+            $("li a").toggle(function () {
+                var link = $(this);
+                var scale = zoom == 1 ? 1 : zoom * 1.1;
+                var color = colors[$("li a.selected").length % colors.length];
+                link.addClass("selected").css({"color":color });
+                map.selectAlliance({an:link.attr("data-name"), c:color});
+                return false;
+            }, function () {
+                var link = $(this);
+                var scale = zoom == 1 ? 1 : zoom;
+                link.removeClass("selected").css({"color":"" });
+                map.deSelectAlliance(link.attr("data-name"));
+                return false;
+            });
+            map.bases = data.bases;
+            map.show();
+            cb();
+            $("#pop").popover('hide');
+        });
+
     }
 }
 
@@ -303,49 +335,26 @@ $(document).ready(function () {
     $("canvas").mouseup(map.dragEnd);
 
     $(".menu-btn a").click(function () {
-        var a = $(this);
-        $.getJSON($(this).attr("data-file"), function (data) {
-            $("#server").html(a.html());
-            $("#last-update").html(data.updated);
-            $("#bases-total").html(data.bases.length);
-            $alliances = "";
-            $.each(data.alliances, function () {
-                $alliances += "<li><a href='' data-name='" + this.a + "'>" + this.an + " (" + this.c + ")</a></li>";
-            });
-
-            $("ul.alliances").html($alliances);
-            $("li a").toggle(function () {
-                var link = $(this);
-                var scale = zoom == 1 ? 1 : zoom * 1.1;
-                var color = colors[$("li a.selected").length % colors.length];
-                link.addClass("selected").css({"color":color });
-                map.selectAlliance({an:link.attr("data-name"), c:color});
-                return false;
-            }, function () {
-                var link = $(this);
-                var scale = zoom == 1 ? 1 : zoom;
-                link.removeClass("selected").css({"color":"" });
-                map.deSelectAlliance(link.attr("data-name"));
-                return false;
-            });
-            map.loadBases(data.bases);
+        map.loadData($(this).attr("data-server"), function () {
         });
         return false;
     });
     $("#pop").popover('hide');
 
-//    if (location.hash) {
-//         try {
-//             var xyz = location.hash.slice(1).split("/"), xy = xyz[0].split(":");
-//             if (typeof xyz[1] != 'undefined') {
-//                 zoom = xyz[1];
-//                 changeZoom(zoom);
-//             }
-//             map.scrollTo(map.getScale() * xy[0], map.getScale() * xy[1]);
-//         } catch (e) {
-//             console.log(e);
-//         }
-//     }
+    if (location.hash) {
+        try {
+            var xyzs = xyz = location.hash.slice(1).split("s"), xyz = xyzs[0].split("/"), xy = xyz[0].split(":");
+            if (typeof xyz[1] != 'undefined') {
+                zoom = xyz[1];
+                changeZoom(zoom);
+            }
+            map.loadData(xyzs[1], function () {
+                map.scrollTo(map.getScale() * xy[0], map.getScale() * xy[1]);
+            });
+        } catch (e) {
+            console.log(e);
+        }
+    }
 //    $("a[data-name=174]").trigger("click");
 //    $("a[data-name=702]").trigger("click");
 //    $("a[data-name=1322]").trigger("click");
