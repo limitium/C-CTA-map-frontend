@@ -8,7 +8,6 @@ class Grabber
 
     public function __construct(CnCApi $api)
     {
-
         $this->api = $api;
     }
 
@@ -16,7 +15,7 @@ class Grabber
     {
 
         $last = $this->api->getPlayerCount();
-        $step = 1000;
+        $step = 100;
         $cur = 0;
         print_r("Total: $last\r\n");
         while ($cur < $last) {
@@ -27,8 +26,11 @@ class Grabber
             ;
 
             print_r("Get from $cur to $next \r\n");
-            $p = $this->api->getPlayers($cur, $next);
-            foreach ($p->p as $user) {
+            $p = (array)$this->api->getPlayers($cur, $next);
+            if (!$p['p']) {
+                print_r($p);
+            }
+            foreach ($p['p'] as $user) {
                 $user = (array)$user;
 
                 $addData = (array)$this->api->getUserInfo($user['p']);
@@ -49,8 +51,8 @@ class Grabber
 
 
         $alliances = array();
-
         $bases = array();
+        $players = array();
         foreach ($this->users as $user) {
             if ($user['an'] == "") {
                 $user['an'] = "No Alliance";
@@ -59,23 +61,36 @@ class Grabber
             if (!isset($alliances[$user['a']])) {
                 $alliances[$user['a']] = array(
                     'a' => $user['a'],
-                    'an' => $user['an'],
+                    'an' => $user['an'], //Alliance Name
                     'c' => 1
                 );
             }
 
             $alliances[$user['a']]['c']++;
 
+            $players[$user['i']] = array(
+                'bd' => $user['bd'], //Enemy bases destoed total?
+                'bde' => $user['bde'], //Forgoteen base destoed?
+                'd' => $user['d'], //Bases Destroyed
+                'bc' => $user['bc'], //Base Count
+                'r' => $user['r'], //Rank
+                'p' => $user['p'], //Points
+                'i' => $user['i'], //Player ID
+                'a' => $user['a'], //Alliance ID
+                'n' => $user['n'], //Player Name
+                'dccc' => $user['dccc'], //Distance from center
+            );
+
             if (is_array($user["c"])) {
                 foreach ($user["c"] as $base) {
-
                     $bases[] = array(
-                        'x' => $base['x'],
-                        'y' => $base['y'],
-                        'n' => $user['n'],
-                        'bn' => $base['n'],
-                        'p' => $user['p'],
-                        'a' => $user['a']
+                        'pi' => $user['i'], //Player ID
+
+                        'y' => $base['y'], //y
+                        'x' => $base['x'], //x
+                        'n' => $base['n'], //Name
+                        'i' => $base['i'], //Base ID
+                        'p' => $base['p'], //Points
                     );
                 }
             }
@@ -84,20 +99,22 @@ class Grabber
 
         uasort($alliances, "Grabber::sort");
 
-        $bases = array('bases' => $bases,
+        $data = array('bases' => $bases,
+            'players' => $players,
+            'alliances' => array_values($alliances),
             'updated' => date("d/m/Y H:i:s"),
-            'alliances' => $alliances
+            'timestamp' => time(),
         );
 
         $path = dirname(__FILE__) . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "js" . DIRECTORY_SEPARATOR . "cncdata" . DIRECTORY_SEPARATOR;
         $dataFile = $path . "data_" . $this->api->getServer() . ".json";
         @rename($dataFile, $path . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "data" . DIRECTORY_SEPARATOR . "data_" . $this->api->getServer() . "_" . date("Y-m-d_H-i-s") . ".json");
-        file_put_contents($dataFile, json_encode($bases));
+        file_put_contents($dataFile, json_encode($data));
     }
 
     public static function sort($a, $b)
     {
-        return ($a["c"] > $b["c"]) ? -1 : 1;
+        return ($a['an'] > $b['an']) ? 1 : -1;
     }
 
     public function load()
