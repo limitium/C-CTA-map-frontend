@@ -11,8 +11,8 @@ require 'models/SettingsForm.php';
 $settings = require __DIR__ . DIRECTORY_SEPARATOR . "settings.php";
 
 ORM::configure($settings["db_url"]);
-ORM::configure($settings["db_username"]);
-ORM::configure($settings["db_password"]);
+ORM::configure('username',$settings["db_username"]);
+ORM::configure('password',$settings["db_password"]);
 
 $app = new Slim($settings);
 
