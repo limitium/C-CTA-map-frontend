@@ -1052,12 +1052,6 @@ $(document).ready(function () {
         return false;
     });
 
-    $("#vote").click(function () {
-        $("#modal-poll").modal();
-        $(".poll_booroo52124,.padded_booroo,.submit_booroo,.booroo_footer").removeAttr("style");
-        $("#ans-radio-other").css({width:"95%"});
-    });
-
     map.init(ct.getContext("2d"), buf.getContext("2d"));
     map.onHoverBase = hoverBase;
     map.onHoverPoi = hoverPoi;
