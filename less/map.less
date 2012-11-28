@@ -1,0 +1,202 @@
+.info-frame(){
+    cursor: default;
+    position: fixed;
+    .user-select(none);
+    font-family: @fontFamily;
+    font-weight: bold;
+    font-size: 12px;
+    color: @colorHover;
+    overflow: hidden;
+    background-color: #666;
+    .opacity(90);
+}
+
+body.map {
+    cursor: pointer;
+    overflow: hidden;
+    background-color: #161616;
+
+    #world-info {
+        .info-frame();
+
+        top: 0px;
+        left: 0px;
+        width: 200px;
+        .border-radius(0px 0px 5px 0px);
+        border-bottom: @borderBox;
+        border-right: @borderBox;
+
+        .server-info {
+            padding: 5px 5px 5px 25px;
+        }
+        .point-info, .alliance-info {
+            ul {
+                padding: 0 5px 5px 25px;
+                border-top: @borderBox;
+                list-style: none;
+                margin: 0px;
+            }
+        }
+    }
+
+    #users {
+        .info-frame();
+        top: 0;
+        left: 201px;
+        padding: 5px;
+        .border-radius(0px 0px 5px 0px);
+        border-bottom: @borderBox;
+        border-right: @borderBox;
+        form {
+            margin: 0 0 0 5px;
+            display: inline-block;
+        }
+        input {
+            width: 100px;
+        }
+        #draw-width {
+            width: 20px;
+            margin-bottom: 0px;
+            &.hide {
+                display: none;
+            }
+        }
+    }
+
+    .menu {
+        background-color: transparent;
+        display: block;
+        margin: 0px;
+        width: 200px;
+        position: fixed;
+        cursor: default;
+        padding: 0px;
+    }
+
+    .alliance {
+        top: 0px;
+        right: 0px;
+    }
+    .actions {
+        padding: 5px;
+        background-color: #CDD6DD;
+        opacity: 0.8;
+        margin-left: 6px;
+        background-image: url("../img/menu-bg.png");
+        background-position: 0 0;
+        background-repeat: repeat;
+    }
+
+    .menu-bottom {
+        -moz-user-select: -moz-none;
+        background-image: url("../img/menu-bottom.png");
+        background-position: 0 0;
+        background-repeat: no-repeat;
+        height: 21px;
+        width: 210px;
+    }
+
+    .menu-top {
+        -moz-user-select: -moz-none;
+        background-image: url("../img/menu-top.png");
+        background-position: 0 0;
+        background-repeat: no-repeat;
+        height: 20px;
+        width: 210px;
+    }
+
+    label {
+        display: block !important;
+    }
+
+    .search-query {
+        width: 114px;
+    }
+
+    .alliance ul {
+        list-style: none;
+        margin: 0 0 0 0;
+        padding: 5px;
+        height: 300px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        background-color: #CDD6DD;
+        opacity: 0.8;
+        margin-left: 6px;
+        background-image: url("../img/menu-bg.png");
+        background-position: 0 0;
+        background-repeat: repeat;
+    }
+
+    a, button {
+        font-size: 12px;
+        font-weight: 900;
+        font-family: Play, sans-serif;
+        color: #000000;
+    }
+
+    a:visited, button:hover {
+        color: #000000;
+    }
+
+    a.selected, button {
+        font-weight: 900;
+    }
+
+    .nick {
+        position: absolute;
+        display: block;
+        width: 2px;
+        height: 2px;
+        background-color: #000000;
+        -webkit-border-radius: 1px;
+        -moz-border-radius: 1px;
+        border-radius: 1px;
+        z-index: 100;
+    }
+
+    .loader {
+        background-image: url("http://images4.wikia.nocookie.net/__cb20051028174519/uncyclopedia/images/1/17/Static.gif");
+        background-position: 0 0;
+        background-repeat: repeat;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+
+    #pop {
+        z-index: 100;
+        position: absolute;
+        margin: 0;
+        padding: 0;
+        height: 1px;
+        width: 1px;
+    }
+
+    canvas#map, canvas.renderer {
+        margin: 0 auto;
+        display: block;
+        z-index: -100;
+        background-color: #161616;
+    }
+
+    canvas.renderer {
+        display: none;
+    }
+    canvas#drawer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        background-color: transparent;
+    }
+
+    .color-picker {
+        position: absolute;
+    }
+    ._wColorPicker_buttonBorder {
+        display: none;
+    }
+
+}

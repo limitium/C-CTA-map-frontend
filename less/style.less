@@ -1,0 +1,43 @@
+@import "bootstrap/bootstrap.less";
+
+@colorBG: #161616;
+@colorFont: #1cd412;
+@colorHover: #20FC15;
+@fontFamily: "Play",
+sans-serif
+
+;
+@borderBox: 1pxsolid
+
+@colorFont
+;
+
+@import "map.less";
+@import "index.less";
+
+.ads {
+    border-top: @borderBox;
+
+    background-color: #666;
+    position: fixed;
+    bottom: 0;
+    overflow: hidden;
+    &.left {
+        border-right: @borderBox;
+        .border-radius(0px 5px 0px 0px);
+        left: 0;
+        height: 60px;
+        width: 468px;
+    }
+    &.right {
+        .border-radius(5px 0px 0px 0px);
+        border-left: @borderBox;
+        right: 0;
+        height: 90px;
+        width: 728px;
+
+    }
+    ins {
+        background-color: transparent;
+    }
+}
