@@ -57,6 +57,8 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
     </div>
     <div class="row">
         <div class="changelog span8 offset2">
+            <h5>16.12.2012</h5>
+            Added Monde 8, World 57 (Europe), World 58 (USA East Coast), Welt 21, Mundo 5 Brazil.
             <h5>5.12.2012</h5>
             Added Dünya3, World 55, Mundo 8 (España), Świat 5, World 56, Wereld 3.
             <h5>27.11.2012</h5>
