@@ -40,4 +40,4 @@ publish
 
 # build script local files
 build
-settings.php
+/settings.php
