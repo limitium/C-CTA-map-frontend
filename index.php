@@ -13,6 +13,7 @@ $settings = require __DIR__ . DIRECTORY_SEPARATOR . "settings.php";
 ORM::configure($settings["db_url"]);
 ORM::configure('username',$settings["db_username"]);
 ORM::configure('password',$settings["db_password"]);
+ORM::configure('driver_options', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 
 $app = new Slim($settings);
 
