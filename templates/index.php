@@ -57,6 +57,9 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
     </div>
     <div class="row">
         <div class="changelog span8 offset2">
+            <h5>30.12.2012</h5>
+            Good news everyone! Today we have lunched Email notification service. You need go to <a hreg="http://map.tiberium-alliances.com/settings#notifications">settings</a> page specify your email, nickname and you will receive notification when your base is alerted or destroyed.
+            Special thanks to Chris Misztur.
             <h5>24.12.2012</h5>
             Added World 59 (USA West Coast), World 60 (Europe), Мир 10, Mundo 8 (España).
             <h5>16.12.2012</h5>

@@ -157,12 +157,12 @@ class SettingsForm
         ),
         'notice-altered' => array(
             'label' => 'Base is altered',
-            'val' => 0,
+            'val' => 1,
             'type' => 'check',
         ),
         'notice-ruined' => array(
             'label' => 'Base is ruined',
-            'val' => 0,
+            'val' => 1,
             'type' => 'check',
         ),
     );
