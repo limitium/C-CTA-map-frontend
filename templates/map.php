@@ -221,6 +221,14 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
 <!-- scripts concatenated and minified via build script -->
 <script src="/js/plugins.js"></script>
 
+<script src="/js/models/Square.js"></script>
+<script src="/js/models/Base.js"></script>
+<script src="/js/models/Poi.js"></script>
+<script src="/js/models/Alliance.js"></script>
+<script src="/js/models/Player.js"></script>
+<script src="/js/map.js"></script>
+<script src="/js/drawings.js"></script>
+<script src="/js/helpers.js"></script>
 <script src="/js/script.js"></script>
 
 <!-- end scripts -->
