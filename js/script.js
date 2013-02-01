@@ -78,6 +78,7 @@ $(document).ready(function () {
     map.onHoverPoi = hoverPoi;
     map.onBlurBase = cleanPointInfo;
     map.onBlurPoi = cleanPointInfo;
+    map.onMouseMove = cursorMove;
 
     resizeCanvas();
 

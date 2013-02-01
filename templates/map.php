@@ -39,6 +39,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
     different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a>
     to experience this site.</p><![endif]-->
 <div id="main">
+    <div class="mouse-coordinates"></div>
     <div class="color-picker"></div>
     <div class="loader"></div>
     <canvas id="map" width="1000px" height="1000px"></canvas>

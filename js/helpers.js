@@ -178,6 +178,14 @@ function cleanPointInfo() {
         $(".point-info").html("");
     }
 }
+function cursorMove(wx, wy, x, y) {
+    var box = $(".mouse-coordinates");
+    if (x && y) {
+        box.html(Math.round(x) + ":" + Math.round(y));
+    }
+    box.offset({ top: wy + 20, left: wx + 20});
+
+}
 function cleanAllianceInfo() {
     $(".alliance-info").html("");
 }

@@ -12,6 +12,8 @@ var map = {
         };
         map.onBlurPoi = function () {
         };
+        map.onMouseMove = function () {
+        };
         map.clear();
     },
     clear: function () {
@@ -226,6 +228,7 @@ var map = {
     },
 
     mousemove: function (e) {
+        var inGridX, inGridY;
         if (map.dragging) {
             map.moveMapTo(map.ox + (e.pageX - map.dragPrevX), map.oy + (e.pageY - map.dragPrevY));
 
@@ -273,6 +276,7 @@ var map = {
                 }
             }
         }
+        map.onMouseMove(e.pageX, e.pageY, inGridX, inGridY);
     },
     hoverBase: function (base) {
         map.hoveredBase = base;

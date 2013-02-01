@@ -730,6 +730,7 @@ body.map a:visited,body.map button:hover{color:#000000;}
 body.map a.selected,body.map button{font-weight:900;}
 body.map .nick{position:absolute;display:block;width:2px;height:2px;background-color:#000000;-webkit-border-radius:1px;-moz-border-radius:1px;border-radius:1px;z-index:100;}
 body.map .loader{background-image:url("http://images4.wikia.nocookie.net/__cb20051028174519/uncyclopedia/images/1/17/Static.gif");background-position:0 0;background-repeat:repeat;position:absolute;width:100%;height:100%;display:block;}
+body.map .mouse-coordinates{cursor:default;position:fixed;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;-o-user-select:none;user-select:none;font-family:"Play",sans-serif;font-weight:bold;font-size:12px;color:#20fc15;overflow:hidden;background-color:#666;opacity:0.9;filter:alpha(opacity=90);border:1px solid #1cd412;position:absolute;padding:2px 4px;}
 body.map #pop{z-index:100;position:absolute;margin:0;padding:0;height:1px;width:1px;}
 body.map canvas#map,body.map canvas.renderer{margin:0 auto;display:block;z-index:-100;background-color:#161616;}
 body.map canvas.renderer{display:none;}

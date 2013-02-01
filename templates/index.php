@@ -57,6 +57,8 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
     </div>
     <div class="row">
         <div class="changelog span8 offset2">
+            <h5>1.02.2013</h5>
+            Improve map load speed. Cursor position added.
             <h5>27.01.2013</h5>
             Added World 63 (Europe), Mundo 10 (España), Mundo 6 Brazil, Welt 24, Мир 12, World 64 (USA East Coast), World 65 (USA West Coast).
             <h5>15.01.2013</h5>
