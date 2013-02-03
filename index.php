@@ -156,7 +156,7 @@ $app->post('/settings', $checkAuthorization, function () use($app)
         $app->redirect("/settings");
     }
     $app->flashNow("error", "<strong>Oh shi.</strong> Can't save! Please fix error fields!!!");
-    $app->render("settings.php", array("settings" => $settingsForm));
+    $app->render("settings.php", array("back" => $app->getCookie("back"),"settings" => $settingsForm));
 });
 
 $app->get('/reset', $checkAuthorization, function() use($app)

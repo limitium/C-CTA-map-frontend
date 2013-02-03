@@ -212,7 +212,8 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
 <script>
     $(function () {
         $("input[name^=color][type=text]").minicolors({
-            theme:"bootstrap"
+            theme:"bootstrap",
+            letterCase:"uppercase"
         });
 
         var tab = $("[href=" + location.hash + "]");
