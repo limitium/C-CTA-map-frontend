@@ -74,6 +74,10 @@ Square.prototype.renderBases = function (renderer, scale) {
         }
         if (map.selectedBase && map.selectedBase.getAlliance() == base.getAlliance()) {
             color = settings['color-selected'];
+            if (map.selectedBase.pi == base.pi) {
+                color = settings['color-selected-base'];
+            }
+
         }
 
         this.renderBase(renderer, scale, x, y, r, color, a, base);

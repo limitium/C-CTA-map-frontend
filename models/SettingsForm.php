@@ -50,8 +50,13 @@ class SettingsForm
             'val' => '#56DC6D',
             'type' => 'color',
         ),
+        'color-selected-base' => array(
+            'label' => 'Selected base',
+            'val' => '#FFC170',
+            'type' => 'color',
+        ),
         'color-selected' => array(
-            'label' => 'Selected bases',
+            'label' => 'Selected alliance',
             'val' => '#FFFFFF',
             'type' => 'color',
         ),

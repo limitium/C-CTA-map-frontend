@@ -57,6 +57,8 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
     </div>
     <div class="row">
         <div class="changelog span8 offset2">
+            <h5>4.02.2013</h5>
+            New colorpicker for alliance selection. Added possibility to change selected base and alliance color independently.
             <h5>1.02.2013</h5>
             Improve map load speed. Cursor position added.
             <h5>27.01.2013</h5>

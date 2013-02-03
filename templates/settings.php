@@ -93,7 +93,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
 
                     <div class="tab-pane" id="colors">
                         <div class="span4">
-                            <?php foreach (array('color-background', 'color-grid', 'color-grid-label', 'color-base', 'color-selected', 'color-self', 'color-protected', 'color-altered') as $fName) : ?>
+                            <?php foreach (array('color-background', 'color-grid', 'color-grid-label', 'color-base', 'color-selected-base','color-selected', 'color-self', 'color-protected', 'color-altered') as $fName) : ?>
                                 <div
                                     class="control-group<?php echo isset($settings->fields[$fName]['invalid']) ? " error" : ""; ?>">
                                     <label class="control-label"
@@ -211,7 +211,9 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
 <script src="/js/libs/jquery.miniColors.js"></script>
 <script>
     $(function () {
-        $("input[name^=color][type=text]").minicolors();
+        $("input[name^=color][type=text]").minicolors({
+            theme:"bootstrap"
+        });
 
         var tab = $("[href=" + location.hash + "]");
         if (!tab.length) {
