@@ -6,7 +6,9 @@ function initDrawing() {
     var drawButton = $("#draw"),
         clearButton = $("#clear"),
         removeLast = $("#remove-last"),
-        color = $("#draw-color").miniColors(),
+        color = $("#draw-color").minicolors({
+            theme: "bootstrap"
+        }),
         width = $("#draw-width"),
         colorPicker = $(".miniColors-trigger").addClass("hide"),
         save = $("#save"),

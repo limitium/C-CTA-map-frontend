@@ -24,7 +24,6 @@
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
     <link rel="icon" type="image/png" href="favicon.png"/>
-    <link rel="stylesheet" href="/css/wColorPicker.1.2.css">
     <link rel="stylesheet" href="/css/jquery.miniColors.css">
     <link
         href='http://fonts.googleapis.com/css?family=Play&subset=latin,latin-ext,cyrillic-ext,cyrillic,greek,greek-ext'
@@ -39,8 +38,8 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
     different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a>
     to experience this site.</p><![endif]-->
 <div id="main">
+    <div class="color-picker hide"><input type="text"/></div>
     <div class="mouse-coordinates"></div>
-    <div class="color-picker"></div>
     <div class="loader"></div>
     <canvas id="map" width="1000px" height="1000px"></canvas>
     <canvas class="renderer"></canvas>
@@ -59,31 +58,31 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
         </div>
     </div>
 
-
     <div id="users">
         <a class="btn btn-success" href="/">Servers</a>
         <?php if ($role == "guest"): ?>
-        <a class="btn btn-success in" href="/auth">Sign in</a>
+            <a class="btn btn-success in" href="/auth">Sign in</a>
         <?php else: ?>
-        <a class="btn btn-success in" href="/settings">Settings</a>
+            <a class="btn btn-success in" href="/settings">Settings</a>
         <?php endif; ?>
         <?php if ($role == "guest"): ?>
-        <a class="btn btn-warning" href="/auth">Draw</a>
+            <a class="btn btn-warning" href="/auth">Draw</a>
         <?php else: ?>
-        <button class="btn btn-warning" id="draw" href="#">Draw</button>
+            <button class="btn btn-warning" id="draw" href="#">Draw</button>
+            <button class="btn btn-success" id="clear" href="#">Clear</button>
+            <button class="btn btn-success" id="remove-last" href="#">Remove last</button>
+            <input id="draw-color" type="text" value="#FF0000">
+            <input id="draw-width" type="number" value="1">
+            <button class="btn btn-success" id="save" href="#">Save</button>
+            <button class="btn btn-success" id="load" href="#">Load</button>
+            <button class="btn btn-info" id="share" href="#">Share</button>
         <?php endif; ?>
-        <button class="btn btn-success hide" id="clear" href="#">Clear</button>
-        <button class="btn btn-success hide" id="remove-last" href="#">Remove last</button>
-        <input class="hide" id="draw-color" type="hidden" value="#FF0000">
-        <input class="hide" id="draw-width" type="number" value="1">
-        <button class="btn btn-success hide" id="save" href="#">Save</button>
-        <button class="btn btn-success hide" id="load" href="#">Load</button>
-        <button class="btn btn-info" id="share" href="#">Share</button>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
             <input type="hidden" name="cmd" value="_s-xclick">
             <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----MIIHRwYJKoZIhvcNAQcEoIIHODCCBzQCAQExggEwMIIBLAIBADCBlDCBjjELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtQYXlQYWwgSW5jLjETMBEGA1UECxQKbGl2ZV9jZXJ0czERMA8GA1UEAxQIbGl2ZV9hcGkxHDAaBgkqhkiG9w0BCQEWDXJlQHBheXBhbC5jb20CAQAwDQYJKoZIhvcNAQEBBQAEgYAycYdYltXiG2juM7NA3K3jp17kj9GewYfpQ8BIFvIJCrIqCKnHDW9H82jL2WGouExbjwAvcymofMg7tXuHWmKCcHiP76wXeXXKDqd4rFwD7UYh08p4NSM3HoexsCSAgRpPLijuvYLPjKxZhDr8js/oZvNVIWXVbncNnMNBjja4tzELMAkGBSsOAwIaBQAwgcQGCSqGSIb3DQEHATAUBggqhkiG9w0DBwQIc/k7mpeo83aAgaCUoEOzukCCJf2yvK3OblXVR/E3up4HvPdUIvFhtl7BTRnftTTUQNduNORXabEnabwTzAviGtxZtV3B8BduTxc6ln1HoA6kbH68j4dTvj2+63aF/avnQU96lrVMJTqdx7eKNitA3CGVtLdEl+BBPoU+SwLNQuJlm1bxmK34Dodzld8sHEVqJtjLwwyNVWwU2EFORV7z5uUBidSTeBQOqG4UoIIDhzCCA4MwggLsoAMCAQICAQAwDQYJKoZIhvcNAQEFBQAwgY4xCzAJBgNVBAYTAlVTMQswCQYDVQQIEwJDQTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEUMBIGA1UEChMLUGF5UGFsIEluYy4xEzARBgNVBAsUCmxpdmVfY2VydHMxETAPBgNVBAMUCGxpdmVfYXBpMRwwGgYJKoZIhvcNAQkBFg1yZUBwYXlwYWwuY29tMB4XDTA0MDIxMzEwMTMxNVoXDTM1MDIxMzEwMTMxNVowgY4xCzAJBgNVBAYTAlVTMQswCQYDVQQIEwJDQTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEUMBIGA1UEChMLUGF5UGFsIEluYy4xEzARBgNVBAsUCmxpdmVfY2VydHMxETAPBgNVBAMUCGxpdmVfYXBpMRwwGgYJKoZIhvcNAQkBFg1yZUBwYXlwYWwuY29tMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDBR07d/ETMS1ycjtkpkvjXZe9k+6CieLuLsPumsJ7QC1odNz3sJiCbs2wC0nLE0uLGaEtXynIgRqIddYCHx88pb5HTXv4SZeuv0Rqq4+axW9PLAAATU8w04qqjaSXgbGLP3NmohqM6bV9kZZwZLR/klDaQGo1u9uDb9lr4Yn+rBQIDAQABo4HuMIHrMB0GA1UdDgQWBBSWn3y7xm8XvVk/UtcKG+wQ1mSUazCBuwYDVR0jBIGzMIGwgBSWn3y7xm8XvVk/UtcKG+wQ1mSUa6GBlKSBkTCBjjELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtQYXlQYWwgSW5jLjETMBEGA1UECxQKbGl2ZV9jZXJ0czERMA8GA1UEAxQIbGl2ZV9hcGkxHDAaBgkqhkiG9w0BCQEWDXJlQHBheXBhbC5jb22CAQAwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQUFAAOBgQCBXzpWmoBa5e9fo6ujionW1hUhPkOBakTr3YCDjbYfvJEiv/2P+IobhOGJr85+XHhN0v4gUkEDI8r2/rNk1m0GA8HKddvTjyGw/XqXa+LSTlDYkqI8OwR8GEYj4efEtcRpRYBxV8KxAW93YDWzFGvruKnnLbDAF6VR5w/cCMn5hzGCAZowggGWAgEBMIGUMIGOMQswCQYDVQQGEwJVUzELMAkGA1UECBMCQ0ExFjAUBgNVBAcTDU1vdW50YWluIFZpZXcxFDASBgNVBAoTC1BheVBhbCBJbmMuMRMwEQYDVQQLFApsaXZlX2NlcnRzMREwDwYDVQQDFAhsaXZlX2FwaTEcMBoGCSqGSIb3DQEJARYNcmVAcGF5cGFsLmNvbQIBADAJBgUrDgMCGgUAoF0wGAYJKoZIhvcNAQkDMQsGCSqGSIb3DQEHATAcBgkqhkiG9w0BCQUxDxcNMTIxMTI4MDgzNzM1WjAjBgkqhkiG9w0BCQQxFgQUl1Y3EZeGu+w9eNORH27K3Dtk6hAwDQYJKoZIhvcNAQEBBQAEgYA1c8L0N1Ce5jJQyzgBfjoiYdKbhAXUJTuFTfVoPP7IOm0MhToMHchjsmojfK8+hRH6m3daT4MXrM7C/94tdKhR0Bpm865TzzEXJfohib8qMgOugbuEXX1Fe8TlQqzCFQzUUHCh3jFRqgfn4W7PojePKNrrikKyzfsn48tJocsnFw==-----END PKCS7-----
 ">
-            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0"
+                   name="submit" alt="PayPal - The safer, easier way to pay online!">
             <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
         </form>
 
@@ -192,7 +191,8 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
                 <div class="controls">
                     <select id="drawing-load-list" size="10" class="span4">
                         <?php foreach ($markers as $marker): ?>
-                        <option value="<?php echo $marker->hash; ?>"><?php echo $servers[$marker->world]; ?>:<?php echo $marker->hash; ?> <?php echo $marker->name; ?></option>
+                            <option value="<?php echo $marker->hash; ?>"><?php echo $servers[$marker->world]; ?>
+                                :<?php echo $marker->hash; ?> <?php echo $marker->name; ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -270,16 +270,16 @@ mathiasbynens.be/notes/async-analytics-snippet -->
 </script>
 <script type="text/javascript" language=JavaScript src="http://idea.informer.com/tab6.js?domain=c-c-map"></script>
 <noscript><a href="http://c-c-map.idea.informer.com">C&C map feedback </a> <a href="http://idea.informer.com"><img
-    src="http://widget.idea.informer.com/tmpl/images/widget_logo.jpg"/></a></noscript>
+            src="http://widget.idea.informer.com/tmpl/images/widget_logo.jpg"/></a></noscript>
 
 <div class="ads right">
     <script type="text/javascript"><!--
-    google_ad_client = "ca-pub-1812142756488492";
-    /* map2 */
-    google_ad_slot = "7988629993";
-    google_ad_width = 728;
-    google_ad_height = 90;
-    //-->
+        google_ad_client = "ca-pub-1812142756488492";
+        /* map2 */
+        google_ad_slot = "7988629993";
+        google_ad_width = 728;
+        google_ad_height = 90;
+        //-->
     </script>
     <script type="text/javascript"
             src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
@@ -287,12 +287,12 @@ mathiasbynens.be/notes/async-analytics-snippet -->
 </div>
 <div class="ads left">
     <script type="text/javascript"><!--
-    google_ad_client = "ca-pub-1812142756488492";
-    /* map */
-    google_ad_slot = "0218655414";
-    google_ad_width = 468;
-    google_ad_height = 60;
-    //-->
+        google_ad_client = "ca-pub-1812142756488492";
+        /* map */
+        google_ad_slot = "0218655414";
+        google_ad_width = 468;
+        google_ad_height = 60;
+        //-->
     </script>
     <script type="text/javascript"
             src="http://pagead2.googlesyndication.com/pagead/show_ads.js">

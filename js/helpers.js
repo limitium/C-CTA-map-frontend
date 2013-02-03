@@ -67,7 +67,8 @@ function parseHash() {
 function colorClick(color) {
     var picking = $("a.colorPicking");
     if (picking.length) {
-        picking.removeClass("colorPicking").addClass("selected").css({color: color});
+        var a = $("[data-a=" + picking.attr("data-a") + "]")
+        a.removeClass("colorPicking").addClass("selected").css({color: color});
         map.selectAlliance(map.alliances[picking.attr("data-a")], color);
         map.draw();
     }
@@ -78,8 +79,6 @@ function allianceClick(e) {
     var self = $(this), a = $("[data-a=" + self.attr("data-a") + "]"), picking = $("a.colorPicking");
 
     if (picking.length) {
-        //close picker
-        $("._wColorPicker_buttonColor").trigger('click');
         picking.removeClass("colorPicking");
     }
     if (a.hasClass("selected")) {
@@ -87,9 +86,9 @@ function allianceClick(e) {
         map.deSelectAlliance(map.alliances[a.attr("data-a")]);
         map.draw();
     } else {
-        $(".color-picker").css({top: e.pageY - 23 + "px", left: e.pageX - 16 + "px"});
         a.addClass('colorPicking');
-        $("._wColorPicker_buttonColor").trigger('click');
+        $(".color-picker").css({top: e.pageY - 80 + "px", right: 280 + "px", left: ""}).show();
+        $(".color-picker input").trigger("focus");
     }
     return false;
 }

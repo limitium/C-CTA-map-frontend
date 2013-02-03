@@ -34,11 +34,12 @@ $(document).ready(function () {
         map.draw();
     });
 
-    $(".color-picker").wColorPicker({
-        mode: "click",
-        onSelect: colorClick,
-        showSpeed: 100,
-        hideSpeed: 100
+    $(".color-picker input").minicolors({
+        hide:function(){
+            var input = $(this);
+            input.closest(".color-picker").hide();
+            colorClick(input.val());
+        }
     });
 
     $("form.form-search").submit(function () {

@@ -211,7 +211,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
 <script src="/js/libs/jquery.miniColors.js"></script>
 <script>
     $(function () {
-        $("input[name^=color][type=text]").miniColors();
+        $("input[name^=color][type=text]").minicolors();
 
         var tab = $("[href=" + location.hash + "]");
         if (!tab.length) {
