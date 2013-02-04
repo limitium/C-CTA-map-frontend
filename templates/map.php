@@ -227,6 +227,9 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
 <script src="/js/models/Poi.js"></script>
 <script src="/js/models/Alliance.js"></script>
 <script src="/js/models/Player.js"></script>
+<script src="/js/models/ServerHUB.js"></script>
+<script src="/js/models/CenterHUB.js"></script>
+<script src="/js/models/ControlHUB.js"></script>
 <script src="/js/map.js"></script>
 <script src="/js/drawings.js"></script>
 <script src="/js/helpers.js"></script>

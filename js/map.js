@@ -28,6 +28,9 @@ var map = {
         map.selectedAlliances = {};
         map.bases = [];
         map.pois = [];
+        map.centerhubs = [];
+        map.controlhubs = [];
+        map.serverhubs = [];
         map.player = false;
         map.players = [];
         map.alliances = {};
@@ -410,6 +413,20 @@ var map = {
                     this.l,
                     this.t,
                     this.a));
+            }
+        });
+
+        $.each(data.endgames, function () {
+            switch (this.t) {
+                case 1:
+                    map.controlhubs.push(new ControlHUB(this.x, this.y, this.ai));
+                    break;
+                case 2:
+                    map.serverhubs.push(new ServerHUB(this.x, this.y, this.s, this.es));
+                    break;
+                case 3:
+                    map.centerhubs.push(new CenterHUB(this.x, this.y, this.ai, this.cb, this.cd));
+                    break;
             }
         });
 
