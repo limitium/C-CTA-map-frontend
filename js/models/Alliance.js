@@ -3,6 +3,7 @@ function Alliance(a, an, c) {
     this.an = an;
     this.c = c;
     this.squares = [];
+    this.squaresIdMap = {};
     this.poi = {
         "1": {
             score: 0,
@@ -57,5 +58,9 @@ Alliance.prototype.isVisible = function () {
     return true;
 };
 Alliance.prototype.addSquare = function (square) {
-    this.squares.push(square);
+    //@todo: make only map remove array
+    if (typeof this.squaresIdMap[square.id] == 'undefined') {
+        this.squaresIdMap[square.id] = true;
+        this.squares.push(square);
+    }
 };

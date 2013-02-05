@@ -10,14 +10,8 @@ function Base(x, y, n, pi, i, l, al, pr, cb, cd, ps) {
     this.cb = cb;
     this.cd = cd;
     this.ps = ps;
-
-    //min 1 max 4;
-    this.squares = [];
 }
 
-Base.prototype.addSquare = function (square) {
-    this.squares.push(square);
-};
 Base.prototype.getAlliance = function () {
     return map.alliances[map.players[this.pi].a];
 };
@@ -34,7 +28,7 @@ Base.prototype.isVisible = function () {
     return true;
 };
 Base.prototype.inArea = function (x, y) {
-    if (this.isVisible() && Math.sqrt(Math.pow(x - this.x, 2) + Math.pow(y - this.y, 2)) <= settings['size-base']) {
+    if (this.isVisible() && Math.sqrt(Math.pow(x - this.x, 2) + Math.pow(y - this.y, 2)) <= settings['size-base'] / 2) {
         return true;
     }
     return false;

@@ -28,9 +28,7 @@ var map = {
         map.selectedAlliances = {};
         map.bases = [];
         map.pois = [];
-        map.centerhubs = [];
-        map.controlhubs = [];
-        map.serverhubs = [];
+        map.endgames = [];
         map.player = false;
         map.players = [];
         map.alliances = {};
@@ -96,12 +94,27 @@ var map = {
                 boundarySquares[bl].addPoi(poi);
             }
         }
+        l = this.endgames.length;
+        while (l--) {
+            var endgame = this.endgames[l],
+                xs = endgame.x / 100 << 0,
+                ys = endgame.y / 100 << 0;
+            //base in squares
+            map.squares[xs][ys].addEndgame(endgame);
+            //boundary  squares
+            //add squary to allinceHash;
+            var boundarySquares = map.getBoundarySquares(endgame, settings['size-poi'] * 0.0001);
+            var bl = boundarySquares.length;
+            while (bl--) {
+                boundarySquares[bl].addEndgame(endgame);
+            }
+        }
     },
-    getBoundarySquares: function (base, delta) {
+    getBoundarySquares: function (marker, delta) {
         //border bases
         var boundarySquares = [],
-            xd = base.x / 100,
-            yd = base.y / 100,
+            xd = marker.x / 100,
+            yd = marker.y / 100,
             xs = parseInt(xd),
             ys = parseInt(yd),
             deltaX = Math.round((xd)) - xd,
@@ -365,8 +378,15 @@ var map = {
     findPlayerBase: function (playerName) {
         var player = map.search(playerName);
         if (player) {
-            map.selectBase(player.bases[0]);
-            map.scrollTo(player.bases[0].x, player.bases[0].y);
+            var l = map.bases.length;
+            while (l--) {
+                var base = map.bases[l];
+                if (base.pi == player.pi) {
+                    map.selectBase(base);
+                    map.scrollTo(base.x, base.y);
+                    break;
+                }
+            }
         } else {
             alert("Nothing found or all bases are ruined :(");
         }
@@ -402,7 +422,6 @@ var map = {
                 this.ps
             );
             map.bases.push(base);
-            map.players[this.pi].addBase(base);
         });
 
         $.each(data.pois, function () {
@@ -419,13 +438,13 @@ var map = {
         $.each(data.endgames, function () {
             switch (this.t) {
                 case 1:
-                    map.controlhubs.push(new ControlHUB(this.x, this.y, this.ai));
+                    map.endgames.push(new ControlHUB(this.x, this.y, this.ai));
                     break;
                 case 2:
-                    map.serverhubs.push(new ServerHUB(this.x, this.y, this.s, this.es));
+                    map.endgames.push(new ServerHUB(this.x, this.y, this.s, this.es));
                     break;
                 case 3:
-                    map.centerhubs.push(new CenterHUB(this.x, this.y, this.ai, this.cb, this.cd));
+                    map.endgames.push(new CenterHUB(this.x, this.y, this.ai, this.cb, this.cd));
                     break;
             }
         });

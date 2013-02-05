@@ -147,7 +147,7 @@ class SettingsForm
         ),
         'size-poi' => array(
             'label' => 'POI',
-            'val' => 1.5,
+            'val' => 1,
             'type' => 'size',
         ),
         'notice-email' => array(

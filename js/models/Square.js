@@ -9,6 +9,7 @@ function Square(xs, ys, w, h) {
     this.cache = {};
     this.bases = [];
     this.pois = [];
+    this.endgames = [];
     this.renderedCount = 0;
     this.selectedBase = null;
 }
@@ -17,10 +18,12 @@ Square.prototype.reload = function () {
 };
 Square.prototype.addBase = function (base) {
     this.bases[this.bases.length] = base;
-    base.addSquare(this);
 };
 Square.prototype.addPoi = function (poi) {
     this.pois[this.pois.length] = poi;
+};
+Square.prototype.addEndgame = function (endgame) {
+    this.endgames[this.endgames.length] = endgame;
 };
 Square.prototype.renderBase = function (renderer, scale, x, y, r, color, a, base) {
     if (base.pr || base.al) {
@@ -53,7 +56,7 @@ Square.prototype.renderBase = function (renderer, scale, x, y, r, color, a, base
 };
 Square.prototype.renderBases = function (renderer, scale) {
     var l = this.bases.length,
-        r = settings['size-base'] * scale,
+        r = settings['size-base'] / 2 * scale,
         sr = 10 * scale,
         a = 2 * Math.PI;
     while (l--) {
@@ -144,6 +147,42 @@ Square.prototype.renderPois = function (renderer, scale) {
         renderer.closePath();
     }
 };
+Square.prototype.renderEndgames = function (renderer, scale) {
+    if (settings['filter-poi-hide']) {
+        return;
+    }
+    var l = this.endgames.length,
+        size = 2.5 * scale;
+        size2 = 0.5 * scale;
+        size3 = 1 * scale;
+    while (l--) {
+        var endgame = this.endgames[l],
+            x = (endgame.x - this.x) * scale ,
+            y = (endgame.y - this.y) * scale;
+
+//        if (!endgame.isVisible()) {
+//            continue;
+//        }
+        renderer.beginPath();
+        var grd = renderer.createRadialGradient(x+size3, y+size3, 0, x+size3, y+size3, size);
+        grd.addColorStop(0, 'rgba(255,0,0,0.3)');
+        grd.addColorStop(1, "#ff0000");
+
+        renderer.fillStyle = grd;
+        renderer.strokeStyle = "#ff0000";
+        renderer.lineWidth = 1;
+
+        renderer.moveTo(x-size2, y-size2);
+        renderer.lineTo(x-size2, y + size);
+        renderer.lineTo(x + size, y + size);
+        renderer.lineTo(x + size, y-size2);
+        renderer.lineTo(x-size2, y-size2);
+
+        renderer.fill();
+        renderer.stroke();
+        renderer.closePath();
+    }
+};
 Square.prototype.renderLog = function (renderer, scale) {
     renderer.font = 20 + "px Calibri";
     renderer.textAlign = "left";
@@ -196,6 +235,7 @@ Square.prototype.render = function (renderer, scale) {
     this.renderedCount++;
     this.renderGridMark(renderer, scale);
     this.renderPois(renderer, scale);
+    this.renderEndgames(renderer, scale);
     this.renderBases(renderer, scale);
 //    this.renderLog(renderer, scale);
 };
