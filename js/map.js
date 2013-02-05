@@ -103,7 +103,7 @@ var map = {
             map.squares[xs][ys].addEndgame(endgame);
             //boundary  squares
             //add squary to allinceHash;
-            var boundarySquares = map.getBoundarySquares(endgame, settings['size-poi'] * 0.0001);
+            var boundarySquares = map.getBoundarySquares(endgame, settings['size-poi'] * 0.05);
             var bl = boundarySquares.length;
             while (bl--) {
                 boundarySquares[bl].addEndgame(endgame);

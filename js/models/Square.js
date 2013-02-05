@@ -151,36 +151,10 @@ Square.prototype.renderEndgames = function (renderer, scale) {
     if (settings['filter-poi-hide']) {
         return;
     }
-    var l = this.endgames.length,
-        size = 2.5 * scale;
-        size2 = 0.5 * scale;
-        size3 = 1 * scale;
+    var l = this.endgames.length;
     while (l--) {
-        var endgame = this.endgames[l],
-            x = (endgame.x - this.x) * scale ,
-            y = (endgame.y - this.y) * scale;
-
-//        if (!endgame.isVisible()) {
-//            continue;
-//        }
-        renderer.beginPath();
-        var grd = renderer.createRadialGradient(x+size3, y+size3, 0, x+size3, y+size3, size);
-        grd.addColorStop(0, 'rgba(255,0,0,0.3)');
-        grd.addColorStop(1, "#ff0000");
-
-        renderer.fillStyle = grd;
-        renderer.strokeStyle = "#ff0000";
-        renderer.lineWidth = 1;
-
-        renderer.moveTo(x-size2, y-size2);
-        renderer.lineTo(x-size2, y + size);
-        renderer.lineTo(x + size, y + size);
-        renderer.lineTo(x + size, y-size2);
-        renderer.lineTo(x-size2, y-size2);
-
-        renderer.fill();
-        renderer.stroke();
-        renderer.closePath();
+        var endgame = this.endgames[l];
+        window[endgame.constructor.name].render(renderer, scale, this, endgame);
     }
 };
 Square.prototype.renderLog = function (renderer, scale) {
