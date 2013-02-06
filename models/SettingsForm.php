@@ -110,6 +110,26 @@ class SettingsForm
             'val' => '#FFB13D',
             'type' => 'color',
         ),
+        'color-center-hub' => array(
+            'label' => 'Center HUB',
+            'val' => '#FF3D64',
+            'type' => 'color',
+        ),
+        'color-control-hub' => array(
+            'label' => 'Control HUB',
+            'val' => '#3D8BFF',
+            'type' => 'color',
+        ),
+        'color-server-hub' => array(
+            'label' => 'Server HUB',
+            'val' => '#DE0059',
+            'type' => 'color',
+        ),
+        'color-server-hub-crash' => array(
+            'label' => 'Server HUB(crash)',
+            'val' => '#FFCB3D',
+            'type' => 'color',
+        ),
         'filter-unselected-hide' => array(
             'label' => 'Hide unselected base',
             'val' => 0,
@@ -117,6 +137,11 @@ class SettingsForm
         ),
         'filter-poi-hide' => array(
             'label' => 'Hide POIs',
+            'val' => 0,
+            'type' => 'check',
+        ),
+        'filter-endgame-hide' => array(
+            'label' => 'Hide endgames',
             'val' => 0,
             'type' => 'check',
         ),
@@ -148,6 +173,21 @@ class SettingsForm
         'size-poi' => array(
             'label' => 'POI',
             'val' => 1,
+            'type' => 'size',
+        ),
+        'size-center-hub' => array(
+            'label' => 'Center HUB',
+            'val' => 4,
+            'type' => 'size',
+        ),
+        'size-control-hub' => array(
+            'label' => 'Control HUB',
+            'val' => 5,
+            'type' => 'size',
+        ),
+        'size-server-hub' => array(
+            'label' => 'Server HUB',
+            'val' => 3,
             'type' => 'size',
         ),
         'notice-email' => array(

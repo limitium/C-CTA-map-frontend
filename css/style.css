@@ -738,6 +738,7 @@ body.map canvas.renderer{display:none;}
 body.map canvas#drawer{position:absolute;top:0;left:0;z-index:0;background-color:transparent;}
 body.map .color-picker{position:absolute;}
 body.map ._wColorPicker_buttonBorder{display:none;}
+.container .tab-content{overflow:visible;}
 body.index{color:#1cd412;font-family:"Play",sans-serif;background-color:#161616;}body.index .container h2{margin-top:20px;margin-bottom:20px;}
 body.index .container ul.world-list li a{color:#1cd412;font-weight:bold;}body.index .container ul.world-list li a:hover{color:#20fc15;}
 body.index .container .changelog{margin-top:30px;margin-bottom:110px;}

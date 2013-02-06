@@ -89,6 +89,22 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
                                 </div>
                             <?php endforeach; ?>
                         </div>
+                        <div class="span4">
+                            <?php foreach (array('filter-endgame-hide') as $fName) : ?>
+                                <div
+                                    class="control-group<?php echo isset($settings->fields[$fName]['invalid']) ? " error" : ""; ?>">
+                                    <label class="control-label"
+                                           for="<?php echo $fName ?>"><?php echo $settings->fields[$fName]['label']; ?></label>
+
+                                    <div class="controls">
+                                        <label class="checkbox">
+                                            <input type="checkbox" id="<?php echo $fName ?>"
+                                                   name="<?php echo $fName ?>"<?php echo $settings->fields[$fName]['val'] ? " checked" : ""; ?>>
+                                        </label>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
                     </div>
 
                     <div class="tab-pane" id="colors">
@@ -122,10 +138,24 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
                                 </div>
                             <?php endforeach; ?>
                         </div>
+                        <div class="span4">
+                            <?php foreach (array('color-center-hub', 'color-control-hub', 'color-server-hub', 'color-server-hub-crash') as $fName) : ?>
+                                <div
+                                    class="control-group<?php echo isset($settings->fields[$fName]['invalid']) ? " error" : ""; ?>">
+                                    <label class="control-label"
+                                           for="<?php echo $fName ?>"><?php echo $settings->fields[$fName]['label']; ?></label>
+
+                                    <div class="controls">
+                                        <input class="input-small" id="<?php echo $fName ?>" name="<?php echo $fName ?>"
+                                               type="text" value="<?php echo $settings->fields[$fName]['val']; ?>">
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
                     </div>
                     <div class="tab-pane" id="sizes">
                         <div class="span4">
-                            <?php foreach (array('size-base', 'size-poi') as $fName) : ?>
+                            <?php foreach (array('size-base', 'size-poi','size-center-hub','size-control-hub','size-server-hub') as $fName) : ?>
                                 <div
                                     class="control-group<?php echo isset($settings->fields[$fName]['invalid']) ? " error" : ""; ?>">
                                     <label class="control-label"
