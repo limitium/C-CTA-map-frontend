@@ -160,6 +160,35 @@ function hoverPoi(poi) {
     info += "</ul>";
     $(".point-info").html(info);
 }
+function hoverEndgame(endgame) {
+    var img, msg;
+    switch (endgame.constructor.name) {
+        case "ServerHUB":
+            img = "server";
+            if (endgame.s == 2) {
+                img += "_impact";
+                msg = "<li><b>Satellite impact zone</b></li>"
+                msg += "<li>Everything will be destroyed in this area</li>"
+            } else {
+                msg = "<li><b>Satellite wreckage</b></li>"
+                img += "_crash";
+            }
+            break;
+        case  "CenterHUB":
+            msg = "<li><b>Forgotten fortress</b></li>"
+            img = "center";
+            break;
+        case "ControlHUB":
+            msg = "<li><b>Shield control HUB</b></li>"
+            img = "control";
+
+    }
+    var info = "<ul>";
+    info += "<li><img src='/img/icons/hub_" + img + ".png' /></li>";
+    info += msg;
+    info += "</ul>";
+    $(".point-info").html(info);
+}
 function zoomIn() {
     setZoom(map.zoom >= 1 ? ++map.zoom : 0.5 + (map.zoom - 0));
 }

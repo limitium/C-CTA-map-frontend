@@ -12,6 +12,10 @@ var map = {
         };
         map.onBlurPoi = function () {
         };
+        map.onHoverEndgame = function () {
+        };
+        map.onBlurEndgame = function () {
+        };
         map.onMouseMove = function () {
         };
         map.clear();
@@ -35,6 +39,7 @@ var map = {
         map.squares = [];
         map.hoveredBase = null;
         map.hoveredPoi = null;
+        map.hoveredEndgame = null;
         map.selectedBase = null;
         map.drawing = false;
 
@@ -260,8 +265,10 @@ var map = {
                 var square = map.squares[xs][ys],
                     bl = square.bases.length,
                     pl = square.pois.length,
+                    el = square.endgames.length,
                     hoveredBase = false,
-                    hoveredPoi = false;
+                    hoveredPoi = false,
+                    hoveredEndgame = false;
                 while (bl--) {
                     var base = square.bases[bl];
                     if (base.inArea(inGridX, inGridY)) {
@@ -274,7 +281,6 @@ var map = {
                         }
                     }
                 }
-
                 while (pl--) {
                     var poi = square.pois[pl];
                     if (!map.hoveredBase && poi.inArea(inGridX, inGridY)) {
@@ -284,8 +290,20 @@ var map = {
                         }
                     }
                 }
+                while (el--) {
+                    var endgame = square.endgames[el];
+                    if (!map.hoveredBase && endgame.inArea(inGridX, inGridY)) {
+                        hoveredEndgame = true;
+                        if (map.hoveredEndgame != endgame) {
+                            map.hoverEndgame(endgame);
+                        }
+                    }
+                }
                 if (!hoveredPoi && map.hoveredPoi) {
                     map.blurPoi();
+                }
+                if (!hoveredEndgame && map.hoveredEndgame) {
+                    map.blurEndgame();
                 }
                 if (!hoveredBase && map.hoveredBase) {
                     map.blurBase();
@@ -309,6 +327,14 @@ var map = {
     blurPoi: function () {
         map.hoveredPoi = null;
         map.onBlurPoi();
+    },
+    hoverEndgame: function (endgame) {
+        map.hoveredEndgame = endgame;
+        map.onHoverEndgame(endgame);
+    },
+    blurEndgame: function () {
+        map.hoveredEndgame = null;
+        map.onBlurEndgame();
     },
     selectBase: function (base) {
         map.selectedBase = base;

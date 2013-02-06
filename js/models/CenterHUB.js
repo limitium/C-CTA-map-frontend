@@ -5,6 +5,21 @@ function CenterHUB(x, y, ai, cb, cd) {
     this.cb = cd;
     this.cd = cb;
 }
+CenterHUB.prototype.isVisible = function () {
+    if (settings['filter-endgame-hide']) {
+        return false;
+    }
+    return true;
+};
+CenterHUB.prototype.inArea = function (x, y) {
+    var s = settings['size-center-hub'],
+        size = (1.5 + (s / 2) ) ,
+        size2 = (-1.5 + (s / 2));
+    if (this.isVisible() && x <= this.x + size && x >= this.x - size2 && y <= this.y + size && y >= this.y - size2) {
+        return true;
+    }
+    return false;
+};
 CenterHUB.render = function (renderer, scale, square, hub) {
     var s = settings['size-center-hub'],
         size = (1.5 + (s / 2) ) * scale,

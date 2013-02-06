@@ -81,8 +81,10 @@ $(document).ready(function () {
     map.init(ct.getContext("2d"), buf.getContext("2d"));
     map.onHoverBase = hoverBase;
     map.onHoverPoi = hoverPoi;
+    map.onHoverEndgame = hoverEndgame;
     map.onBlurBase = cleanPointInfo;
     map.onBlurPoi = cleanPointInfo;
+    map.onBlurEndgame = cleanPointInfo;
     map.onMouseMove = cursorMove;
 
     resizeCanvas();

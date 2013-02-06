@@ -3,6 +3,21 @@ function ControlHUB(x, y, ai) {
     this.y = y;
     this.ai = ai;
 }
+ControlHUB.prototype.isVisible = function () {
+    if (settings['filter-endgame-hide']) {
+        return false;
+    }
+    return true;
+};
+ControlHUB.prototype.inArea = function (x, y) {
+    var s = settings['size-control-hub'],
+        size = (3 + (s / 2) ) ,
+        size2 = (-3 + (s / 2));
+    if (this.isVisible() && x <= this.x + size && x >= this.x - size2 && y <= this.y + size && y >= this.y - size2) {
+        return true;
+    }
+    return false;
+};
 ControlHUB.render = function (renderer, scale, square, hub) {
     var s = settings['size-control-hub'],
         size = (3 + (s / 2) ) * scale,
