@@ -9,7 +9,10 @@ ServerHUB.render = function (renderer, scale, square, hub) {
     var s = settings['size-server-hub'],
         size = (1 + (s / 2) ) * scale,
         size2 = (-1 + (s / 2)) * scale,
-        size3 = 1 * scale;
+        size3 = 1 * scale,
+
+        x = (hub.x - square.x) * scale ,
+        y = (hub.y - square.y) * scale;
 
     renderer.beginPath();
     var grd = renderer.createRadialGradient(x + size3, y + size3, 0, x + size3, y + size3, size);

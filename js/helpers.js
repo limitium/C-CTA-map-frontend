@@ -199,7 +199,6 @@ function resizeCanvas() {
 function setZoom(zoom) {
     if (map.setZoom(zoom)) {
         $('.zoom-lvl').html(zoom);
-        console.log("onscale");
         window.mapListener.onScale(map.getScale());
     }
 }

@@ -5,14 +5,13 @@ function CenterHUB(x, y, ai, cb, cd) {
     this.cb = cd;
     this.cd = cb;
 }
-CenterHUB.render =function (renderer, scale, square, hub) {
-
-    var size = 3.5 * scale,
-        size2 = 0.5 * scale,
+CenterHUB.render = function (renderer, scale, square, hub) {
+    var s = settings['size-center-hub'],
+        size = (1.5 + (s / 2) ) * scale,
+        size2 = (-1.5 + (s / 2) ) * scale,
         size3 = 1.5 * scale,
         x = (hub.x - square.x) * scale ,
         y = (hub.y - square.y) * scale;
-
 
     renderer.beginPath();
     var grd = renderer.createRadialGradient(x + size3, y + size3, 0, x + size3, y + size3, size);

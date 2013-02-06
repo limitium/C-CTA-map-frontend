@@ -4,9 +4,11 @@ function ControlHUB(x, y, ai) {
     this.ai = ai;
 }
 ControlHUB.render = function (renderer, scale, square, hub) {
-    var size = 5.5 * scale,
-        size2 = -0.5 * scale,
+    var s = settings['size-control-hub'],
+        size = (3 + (s / 2) ) * scale,
+        size2 = (-3 + (s / 2) ) * scale,
         size3 = 3 * scale,
+
         x = (hub.x - square.x) * scale ,
         y = (hub.y - square.y) * scale;
 
@@ -14,10 +16,10 @@ ControlHUB.render = function (renderer, scale, square, hub) {
     renderer.beginPath();
     var grd = renderer.createRadialGradient(x + size3, y + size3, 0, x + size3, y + size3, size);
     grd.addColorStop(0, settings['color-control-hub-start']);
-    grd.addColorStop(1,  settings['color-control-hub']);
+    grd.addColorStop(1, settings['color-control-hub']);
 
     renderer.fillStyle = grd;
-    renderer.strokeStyle =  settings['color-control-hub'];
+    renderer.strokeStyle = settings['color-control-hub'];
     renderer.lineWidth = 1;
 
     renderer.moveTo(x - size2, y - size2);
