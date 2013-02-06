@@ -1,26 +1,30 @@
-function ServerHUB(x, y, s, es) {
+function ServerHUB(x, y, s, es, v) {
     this.x = x;
     this.y = y;
     this.s = s;
     this.es = es;
+    this.v = v;
 }
 ServerHUB.render = function (renderer, scale, square, hub) {
-
-
-    var size = 2.5 * scale,
-        size2 = 0.5 * scale,
-        size3 = 1 * scale,
-        x = (hub.x - square.x) * scale ,
-        y = (hub.y - square.y) * scale;
-
+    var s = settings['size-server-hub'],
+        size = (1 + (s / 2) ) * scale,
+        size2 = (-1 + (s / 2)) * scale,
+        size3 = 1 * scale;
 
     renderer.beginPath();
     var grd = renderer.createRadialGradient(x + size3, y + size3, 0, x + size3, y + size3, size);
-    grd.addColorStop(0, 'rgba(255,255,0,0.3)');
-    grd.addColorStop(1, "#ffff00");
+    var color1 = settings['color-server-hub-crash-start'],
+        color2 = settings['color-server-hub-crash'];
+
+    if (hub.s == 2) {
+        color1 = settings['color-server-hub-start'];
+        color2 = settings['color-server-hub'];
+    }
+    grd.addColorStop(0, color1);
+    grd.addColorStop(1, color2);
 
     renderer.fillStyle = grd;
-    renderer.strokeStyle = "#ffff00";
+    renderer.strokeStyle = color2;
     renderer.lineWidth = 1;
 
     renderer.moveTo(x - size2, y - size2);

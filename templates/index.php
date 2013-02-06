@@ -57,6 +57,8 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
     </div>
     <div class="row">
         <div class="changelog span8 offset2">
+            <h5>6.02.2013</h5>
+            Added engames markers, fixed base and poi size.
             <h5>5.02.2013</h5>
             Servers got +6Gb of RAM. Email notification should be sent without delay now.
             <h5>4.02.2013</h5>

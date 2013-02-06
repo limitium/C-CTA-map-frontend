@@ -16,11 +16,11 @@ CenterHUB.render =function (renderer, scale, square, hub) {
 
     renderer.beginPath();
     var grd = renderer.createRadialGradient(x + size3, y + size3, 0, x + size3, y + size3, size);
-    grd.addColorStop(0, 'rgba(255,0,0,0.3)');
-    grd.addColorStop(1, "#ff0000");
+    grd.addColorStop(0, settings['color-center-hub-start']);
+    grd.addColorStop(1, settings['color-center-hub']);
 
     renderer.fillStyle = grd;
-    renderer.strokeStyle = "#ff0000";
+    renderer.strokeStyle = settings['color-center-hub'];
     renderer.lineWidth = 1;
 
     renderer.moveTo(x - size2, y - size2);

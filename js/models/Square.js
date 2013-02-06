@@ -148,7 +148,7 @@ Square.prototype.renderPois = function (renderer, scale) {
     }
 };
 Square.prototype.renderEndgames = function (renderer, scale) {
-    if (settings['filter-poi-hide']) {
+    if (settings['filter-endgame-hide']) {
         return;
     }
     var l = this.endgames.length;
@@ -208,8 +208,8 @@ Square.prototype.renderGridMark = function (renderer, scale) {
 Square.prototype.render = function (renderer, scale) {
     this.renderedCount++;
     this.renderGridMark(renderer, scale);
-    this.renderPois(renderer, scale);
     this.renderEndgames(renderer, scale);
+    this.renderPois(renderer, scale);
     this.renderBases(renderer, scale);
 //    this.renderLog(renderer, scale);
 };

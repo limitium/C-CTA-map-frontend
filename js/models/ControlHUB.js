@@ -13,11 +13,11 @@ ControlHUB.render = function (renderer, scale, square, hub) {
 
     renderer.beginPath();
     var grd = renderer.createRadialGradient(x + size3, y + size3, 0, x + size3, y + size3, size);
-    grd.addColorStop(0, 'rgba(0,255,255,0.3)');
-    grd.addColorStop(1, "#00ffff");
+    grd.addColorStop(0, settings['color-control-hub-start']);
+    grd.addColorStop(1,  settings['color-control-hub']);
 
     renderer.fillStyle = grd;
-    renderer.strokeStyle = "#00ffff";
+    renderer.strokeStyle =  settings['color-control-hub'];
     renderer.lineWidth = 1;
 
     renderer.moveTo(x - size2, y - size2);

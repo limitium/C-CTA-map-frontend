@@ -441,7 +441,7 @@ var map = {
                     map.endgames.push(new ControlHUB(this.x, this.y, this.ai));
                     break;
                 case 2:
-                    map.endgames.push(new ServerHUB(this.x, this.y, this.s, this.es));
+                    map.endgames.push(new ServerHUB(this.x, this.y, this.s, this.es, this.v));
                     break;
                 case 3:
                     map.endgames.push(new CenterHUB(this.x, this.y, this.ai, this.cb, this.cd));

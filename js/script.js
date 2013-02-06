@@ -9,6 +9,10 @@ $(document).ready(function () {
 
     settings['color-grid'] = "rgba(" + hex2rgb(settings['color-grid']) + ",0.1)";
     settings['color-grid-label'] = "rgba(" + hex2rgb(settings['color-grid-label']) + ",0.5)";
+    settings['color-center-hub-start'] = "rgba(" + hex2rgb(settings['color-center-hub']) + ",0.3)";
+    settings['color-control-hub-start'] = "rgba(" + hex2rgb(settings['color-control-hub']) + ",0.3)";
+    settings['color-server-hub-start'] = "rgba(" + hex2rgb(settings['color-server-hub']) + ",0.3)";
+    settings['color-server-hub-crash-start'] = "rgba(" + hex2rgb(settings['color-server-hub-crash']) + ",0.3)";
 
     $("canvas#drawer")
         .mousedown(map.mousedown)
