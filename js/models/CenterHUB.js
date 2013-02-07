@@ -20,6 +20,7 @@ CenterHUB.prototype.inArea = function (x, y) {
     }
     return false;
 };
+CenterHUB.name = "CenterHUB";
 CenterHUB.render = function (renderer, scale, square, hub) {
     var s = settings['size-center-hub'],
         size = (1.5 + (s / 2) ) * scale,

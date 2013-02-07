@@ -233,6 +233,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
 <script src="/js/map.js"></script>
 <script src="/js/drawings.js"></script>
 <script src="/js/helpers.js"></script>
+
 <script src="/js/script.js"></script>
 
 <!-- end scripts -->
