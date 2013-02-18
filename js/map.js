@@ -407,7 +407,7 @@ var map = {
             var l = map.bases.length;
             while (l--) {
                 var base = map.bases[l];
-                if (base.pi == player.pi) {
+                if (base.pi == player.i) {
                     map.selectBase(base);
                     map.scrollTo(base.x, base.y);
                     break;
