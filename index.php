@@ -178,10 +178,11 @@ $app->get('/logout', function() use ($app)
     $app->redirect('/auth');
 });
 
-$app->get('/saver', function() use($app)
+$app->post('/saver', function() use($app)
 {
-    $app->setCookie("back", $app->request()->get("pathname") . "#" . $app->request()->get("hash"));
-    $app->redirect($app->request()->get("url"));
+    $data = $app->request()->post();
+    $app->setCookie("back", $data["pathname"].$data["hash"]);
+    $app->redirect($data["url"]);
 
 });
 $app->post("/path/save", $checkAuthorization, function() use($app)

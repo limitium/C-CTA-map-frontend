@@ -20,6 +20,7 @@ ServerHUB.prototype.inArea = function (x, y) {
     }
     return false;
 };
+ServerHUB.name = "ServerHUB";
 ServerHUB.render = function (renderer, scale, square, hub) {
     var s = settings['size-server-hub'],
         size = (1 + (s / 2) ) * scale,

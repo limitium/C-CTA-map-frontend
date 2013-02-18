@@ -18,6 +18,7 @@ ControlHUB.prototype.inArea = function (x, y) {
     }
     return false;
 };
+ControlHUB.name = "ControlHUB";
 ControlHUB.render = function (renderer, scale, square, hub) {
     var s = settings['size-control-hub'],
         size = (3 + (s / 2) ) * scale,

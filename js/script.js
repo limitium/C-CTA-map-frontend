@@ -39,7 +39,7 @@ $(document).ready(function () {
     });
 
     $(".color-picker input").minicolors({
-        hide:function(){
+        hide: function () {
             var input = $(this);
             input.closest(".color-picker").hide();
             colorClick(input.val());
@@ -52,7 +52,13 @@ $(document).ready(function () {
     });
 
     $("#users a.in").click(function () {
-        window.location = "/saver?url=" + this.href + "&hash=" + window.location.hash.replace("#", "") + "&pathname=" + window.location.pathname;
+        var form = $('<form action="/saver" method="post">' +
+            '<input type="text" name="url" value="' + this.href + '" />' +
+            '<input type="text" name="hash" value="' + window.location.hash + '" />' +
+            '<input type="text" name="pathname" value="' + window.location.pathname + '" />' +
+            '</form>');
+        $('body').append(form);
+        $(form).submit();
         return false;
     });
 
