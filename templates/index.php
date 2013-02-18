@@ -57,6 +57,8 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
     </div>
     <div class="row">
         <div class="changelog span8 offset2">
+            <h5>18.02.2013</h5>
+            Added World 66 (Europe), Welt 25, Мир 13.
             <h5>6.02.2013</h5>
             Added engames markers, fixed base and poi size.
             <h5>5.02.2013</h5>
