@@ -57,6 +57,18 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
     </div>
     <div class="row">
         <div class="changelog span8 offset2">
+            <h5>9.04.2013</h5>
+            Enggame objects has been returned.
+            <h5>8.04.2013</h5>
+            Added Dunia 1, 1 العالم.
+            <h5>25.03.2013</h5>
+            Added Welt 27.
+            <h5>20.03.2013</h5>
+            Added World 68 (USA West Coast), Świat 8, World 69 (USA East Coast), Monde 10, World 70 (Europe).
+            <h5>6.03.2013</h5>
+            Added Świat 7, Мир 14, Welt 26, Mundo 10 (España).
+            <h5>26.02.2013</h5>
+            Added Mundo 7 Brazil, World 67 (USA West Coast).
             <h5>18.02.2013</h5>
             Added World 66 (Europe), Welt 25, Мир 13.
             <h5>6.02.2013</h5>

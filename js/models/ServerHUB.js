@@ -1,9 +1,7 @@
-function ServerHUB(x, y, s, es, v) {
+function ServerHUB(x, y, s) {
     this.x = x;
     this.y = y;
     this.s = s;
-    this.es = es;
-    this.v = v;
 }
 ServerHUB.prototype.isVisible = function () {
     if (settings['filter-endgame-hide']) {

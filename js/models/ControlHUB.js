@@ -1,7 +1,6 @@
-function ControlHUB(x, y, ai) {
+function ControlHUB(x, y) {
     this.x = x;
     this.y = y;
-    this.ai = ai;
 }
 ControlHUB.prototype.isVisible = function () {
     if (settings['filter-endgame-hide']) {

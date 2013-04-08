@@ -274,9 +274,8 @@ var map = {
                     if (base.inArea(inGridX, inGridY)) {
                         hoveredBase = true;
                         if (map.hoveredBase != base) {
-                            if (map.hoveredPoi) {
-                                map.blurPoi();
-                            }
+                            map.hoveredPoi && map.blurPoi();
+                            map.hoveredEndgame && map.blurEndgame();
                             map.hoverBase(base);
                         }
                     }
@@ -462,15 +461,15 @@ var map = {
         });
 
         $.each(data.endgames, function () {
-            switch (this.t) {
+            switch (this.type) {
                 case 1:
-                    map.endgames.push(new ControlHUB(this.x, this.y, this.ai));
+                    map.endgames.push(new ControlHUB(this.x, this.y));
                     break;
                 case 2:
-                    map.endgames.push(new ServerHUB(this.x, this.y, this.s, this.es, this.v));
+                    map.endgames.push(new ServerHUB(this.x, this.y, this.step));
                     break;
                 case 3:
-                    map.endgames.push(new CenterHUB(this.x, this.y, this.ai, this.cb, this.cd));
+                    map.endgames.push(new CenterHUB(this.x, this.y));
                     break;
             }
         });
