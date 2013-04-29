@@ -57,6 +57,10 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
     </div>
     <div class="row">
         <div class="changelog span8 offset2">
+            <h5>29.04.2013</h5>
+            Saved drawings can be deleted.
+            <h5>15.04.2013</h5>
+            Added Mundo 12 (España), Welt 28, World 71 (USA East Coast).
             <h5>9.04.2013</h5>
             Enggame objects has been returned.
             <h5>8.04.2013</h5>

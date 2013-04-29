@@ -15,6 +15,7 @@ function initDrawing() {
         load = $("#load"),
         pushDraw = $("#push-drawing"),
         pullDraw = $("#pull-drawing"),
+        deleteDraw = $("#delete-drawing"),
         loadHash = $("#drawing-load-hash"),
         loadList = $("#drawing-load-list"),
         pushData = null,
@@ -94,6 +95,16 @@ function initDrawing() {
             $("#modal-load").modal("hide");
             loadDrawing(hash, function () {
                 drawButton.trigger("click");
+            });
+        }
+    });
+    deleteDraw.click(function () {
+        var hash = loadHash.val() || loadList.val();
+        if (hash) {
+            deleteDraw.attr("disabled","disabled");
+            $.post("/path/delete/"+hash, function () {
+                $("option[value="+hash+"]").remove();
+                deleteDraw.removeAttr("disabled");
             });
         }
     });

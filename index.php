@@ -11,8 +11,8 @@ require 'models/SettingsForm.php';
 $settings = require __DIR__ . DIRECTORY_SEPARATOR . "settings.php";
 
 ORM::configure($settings["db_url"]);
-ORM::configure('username',$settings["db_username"]);
-ORM::configure('password',$settings["db_password"]);
+ORM::configure('username', $settings["db_username"]);
+ORM::configure('password', $settings["db_password"]);
 ORM::configure('driver_options', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 
 $app = new Slim($settings);
@@ -27,8 +27,7 @@ $app->add(new Slim_Middleware_SessionCookie(), array(
     'secret_key' => $settings["session_secret"]
 ));
 
-$checkAuthorization = function() use ($app)
-{
+$checkAuthorization = function () use ($app) {
     $uid = $app->getEncryptedCookie('c');
     if (!$uid || ($user = Model::factory('User')->where('id', $uid)->find_one()) == null) {
         $app->redirect('/auth');
@@ -38,14 +37,12 @@ $checkAuthorization = function() use ($app)
 };
 
 
-$app->get('/', function () use($app)
-{
+$app->get('/', function () use ($app) {
     $servers = require __DIR__ . DIRECTORY_SEPARATOR . "models" . DIRECTORY_SEPARATOR . "servers.php";
     $app->render("index.php", array("servers" => $servers));
 });
 
-$app->get('/map/:id', function ($id) use($app)
-{
+$app->get('/map/:id', function ($id) use ($app) {
     $serversData = require __DIR__ . DIRECTORY_SEPARATOR . "models" . DIRECTORY_SEPARATOR . "servers.php";
     $servers = array();
     foreach ($serversData as $serverData) {
@@ -75,13 +72,11 @@ $app->get('/map/:id', function ($id) use($app)
     $app->render("map.php", array("server" => $server, "servers" => $servers, "role" => $role, "settings" => json_encode($settingsForm->getValues()), "markers" => $markers));
 });
 
-$app->get('/auth', function () use($app)
-{
+$app->get('/auth', function () use ($app) {
     $app->render("auth.php", array("back" => $app->getCookie("back")));
 });
 
-$app->post('/check', function () use($app)
-{
+$app->post('/check', function () use ($app) {
     $token = $app->request()->post("token");
     $wid = $app->config("loginza_wid");
     $skey = $app->config("loginza_key");
@@ -132,16 +127,14 @@ $app->post('/check', function () use($app)
     $app->redirect($redirect);
 });
 
-$app->get('/settings', $checkAuthorization, function () use($app)
-{
+$app->get('/settings', $checkAuthorization, function () use ($app) {
     $settingsForm = new SettingsForm();
     $settingsForm->fillFrom($app->user->settings()->find_one()->as_array());
 
     $app->render("settings.php", array("back" => $app->getCookie("back"), "settings" => $settingsForm));
 });
 
-$app->post('/settings', $checkAuthorization, function () use($app)
-{
+$app->post('/settings', $checkAuthorization, function () use ($app) {
 
     $settingsForm = new SettingsForm();
     $settingsForm->fillFrom($app->request()->post());
@@ -156,11 +149,10 @@ $app->post('/settings', $checkAuthorization, function () use($app)
         $app->redirect("/settings");
     }
     $app->flashNow("error", "<strong>Oh shi.</strong> Can't save! Please fix error fields!!!");
-    $app->render("settings.php", array("back" => $app->getCookie("back"),"settings" => $settingsForm));
+    $app->render("settings.php", array("back" => $app->getCookie("back"), "settings" => $settingsForm));
 });
 
-$app->get('/reset', $checkAuthorization, function() use($app)
-{
+$app->get('/reset', $checkAuthorization, function () use ($app) {
     //@todo: merge with /post settings
     $settingsForm = new SettingsForm();
     $settings = $app->user->settings()->find_one();
@@ -172,21 +164,18 @@ $app->get('/reset', $checkAuthorization, function() use($app)
     $app->redirect("/settings");
 });
 
-$app->get('/logout', function() use ($app)
-{
+$app->get('/logout', function () use ($app) {
     $app->deleteCookie('c');
     $app->redirect('/auth');
 });
 
-$app->post('/saver', function() use($app)
-{
+$app->post('/saver', function () use ($app) {
     $data = $app->request()->post();
-    $app->setCookie("back", $data["pathname"].$data["hash"]);
+    $app->setCookie("back", $data["pathname"] . $data["hash"]);
     $app->redirect($data["url"]);
 
 });
-$app->post("/path/save", $checkAuthorization, function() use($app)
-{
+$app->post("/path/save", $checkAuthorization, function () use ($app) {
     $data = $app->request()->post();
 
     $marker = Model::factory('Marker')->create();
@@ -200,8 +189,7 @@ $app->post("/path/save", $checkAuthorization, function() use($app)
 
     $app->response()->body($marker->hash);
 });
-$app->get("/path/load/:hash", function($hash) use($app)
-{
+$app->get("/path/load/:hash", function ($hash) use ($app) {
     $hash = strtolower($hash);
     if (!preg_match("/^[0-9a-z]{6}$/", $hash)) {
         return;
@@ -225,6 +213,24 @@ $app->get("/path/load/:hash", function($hash) use($app)
     $marker->paths = json_decode($marker->paths);
 
     $app->response()->body(json_encode($marker->as_array()));
+});
+$app->post("/path/delete/:hash", $checkAuthorization, function ($hash) use ($app) {
+    $hash = strtolower($hash);
+    if (!preg_match("/^[0-9a-z]{6}$/", $hash)) {
+        return;
+    }
+
+    $marker = Model::factory('Marker')->where("hash", $hash)->find_one();
+    if (!$marker) {
+        return;
+    }
+
+    ORM::for_table('marker_user')
+        ->where("user_id", $app->user->id)
+        ->where("marker_id", $marker->id)
+        ->delete_many();
+
+    $app->response()->body(1);
 });
 
 $app->run();

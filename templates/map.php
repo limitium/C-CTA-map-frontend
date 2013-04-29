@@ -200,6 +200,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
         </div>
     </div>
     <div class="modal-footer">
+        <button href="#" class="btn btn-danger" id="delete-drawing">Delete</button>
         <button href="#" class="btn btn-primary" id="pull-drawing">Load</button>
         <button href="#" class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
     </div>
