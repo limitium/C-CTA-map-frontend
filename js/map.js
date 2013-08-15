@@ -55,7 +55,14 @@ var map = {
         map.maxX = (map.maxX / 100 << 0) + 1;
         map.maxY = (map.maxY / 100 << 0) + 1;
 
-        map.maxY = map.maxX = map.maxX > 10 || map.maxY > 10 ? 16 : 10;
+        if (map.maxX = map.maxX > 11 || map.maxY > 11) {
+            map.maxX = 16;
+        } else if (map.maxX = map.maxX > 10 || map.maxY > 10) {
+            map.maxX = 11;
+        } else {
+            map.maxX = 10;
+        }
+        map.maxY = map.maxX;
 
         for (var x = 0; x < map.maxX; x++) {
             map.squares[x] = [];
@@ -487,7 +494,9 @@ var map = {
     calculatePoi: function () {
         _.each(map.pois, function (poi) {
             if (poi.a > 0) {
-                map.alliances[poi.a].poi[poi.t].score += poi.getScore();
+                if (typeof map.alliances[poi.a] != 'undefined') {
+                    map.alliances[poi.a].poi[poi.t].score += poi.getScore();
+                }
             }
         });
         var alliances = _.values(map.alliances);

@@ -57,6 +57,20 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
     </div>
     <div class="row">
         <div class="changelog span8 offset2">
+            <h5>16.08.2013</h5>
+            Added World 81 (Europe), Mundo 9 Brazil, Világ 2, Monde 12.
+            <h5>15.07.2013</h5>
+            Added World 80 (USA East Coast), Fixed new world sizes: Welt 31, Mundo 14 (España), World 78 (Europe), World 79 (USA West Coast).
+            <h5>9.07.2013</h5>
+            Added Welt 31, Mundo 14 (España), World 78 (Europe), World 79 (USA West Coast).
+            <h5>12.06.2013</h5>
+            Added Мир 16, Welt 30, World 77 (USA East Coast)
+            <h5>28.05.2013</h5>
+            Added World 75 (Anniversary)
+            <h5>19.05.2013</h5>
+            Added Welt 29, Mundo 13 (España), Monde 11, Świat 8, Mondo 3.
+            <h5>7.05.2013</h5>
+            Added Мир 15, World 72 (Europe), Dünya 4, Mundo 8 Brazil, Wereld 4, World 73 (USA West Coast), World 74 (USA East Coast).
             <h5>29.04.2013</h5>
             Saved drawings can be deleted.
             <h5>15.04.2013</h5>

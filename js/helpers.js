@@ -156,7 +156,9 @@ function hoverPoi(poi) {
     info += "<li>Position: " + poi.x + ":" + poi.y + "</li>";
     info += "<li>Level: " + poi.l + "</li>";
     info += "<li>Score: " + poi.getScore() + "</li>";
-    info += "<li>Owners: " + map.alliances[poi.a].an + "</li>";
+    if(typeof map.alliances[poi.a] != 'undefined'){
+        info += "<li>Owners: " + map.alliances[poi.a].an + "</li>";
+    }
     info += "</ul>";
     $(".point-info").html(info);
 }
