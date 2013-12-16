@@ -46,940 +46,1015 @@
   ),
   9 => 
   array (
+    'id' => 241,
+    'name' => 'Dünya 5   ',
+  ),
+  10 => 
+  array (
     'id' => 114,
     'name' => 'Lume 1',
   ),
-  10 => 
+  11 => 
   array (
     'id' => 117,
     'name' => 'Maailma 1',
   ),
-  11 => 
+  12 => 
   array (
     'id' => 37,
     'name' => 'Monde 1',
   ),
-  12 => 
+  13 => 
   array (
     'id' => 189,
     'name' => 'Monde 10      ',
   ),
-  13 => 
+  14 => 
   array (
     'id' => 205,
     'name' => 'Monde 11       ',
   ),
-  14 => 
+  15 => 
   array (
     'id' => 233,
     'name' => 'Monde 12        ',
   ),
-  15 => 
+  16 => 
   array (
     'id' => 47,
     'name' => 'Monde 2',
   ),
-  16 => 
+  17 => 
   array (
     'id' => 65,
     'name' => 'Monde 3',
   ),
-  17 => 
+  18 => 
   array (
     'id' => 72,
     'name' => 'Monde 4',
   ),
-  18 => 
+  19 => 
   array (
     'id' => 84,
     'name' => 'Monde 5 ',
   ),
-  19 => 
+  20 => 
   array (
     'id' => 109,
     'name' => 'Monde 6  ',
   ),
-  20 => 
+  21 => 
   array (
     'id' => 134,
     'name' => 'Monde 7   ',
   ),
-  21 => 
+  22 => 
   array (
     'id' => 152,
     'name' => 'Monde 8    ',
   ),
-  22 => 
+  23 => 
   array (
     'id' => 173,
     'name' => 'Monde 9     ',
   ),
-  23 => 
+  24 => 
   array (
     'id' => 38,
     'name' => 'Mondo 1',
   ),
-  24 => 
+  25 => 
   array (
     'id' => 48,
     'name' => 'Mondo 2',
   ),
-  25 => 
+  26 => 
   array (
     'id' => 207,
     'name' => 'Mondo 3 ',
   ),
-  26 => 
+  27 => 
   array (
     'id' => 39,
     'name' => 'Mundo 1 (España)',
   ),
-  27 => 
+  28 => 
   array (
     'id' => 42,
     'name' => 'Mundo 1 (Portuguesa)',
   ),
-  28 => 
+  29 => 
   array (
     'id' => 45,
     'name' => 'Mundo 1 Brazil',
   ),
-  29 => 
+  30 => 
   array (
     'id' => 169,
     'name' => 'Mundo 10 (España)       ',
   ),
-  30 => 
+  31 => 
   array (
     'id' => 185,
     'name' => 'Mundo 11 (España)        ',
   ),
-  31 => 
+  32 => 
   array (
     'id' => 193,
     'name' => 'Mundo 12 (España)         ',
   ),
-  32 => 
+  33 => 
   array (
     'id' => 204,
     'name' => 'Mundo 13 (España)          ',
   ),
-  33 => 
+  34 => 
   array (
     'id' => 226,
     'name' => 'Mundo 14 (España)           ',
   ),
-  34 => 
+  35 => 
+  array (
+    'id' => 239,
+    'name' => 'Mundo 15 (España)            ',
+  ),
+  36 => 
   array (
     'id' => 49,
     'name' => 'Mundo 2 (España)',
   ),
-  35 => 
+  37 => 
   array (
     'id' => 51,
     'name' => 'Mundo 2 (Portuguesa)',
   ),
-  36 => 
+  38 => 
   array (
     'id' => 55,
     'name' => 'Mundo 2 Brazil',
   ),
-  37 => 
+  39 => 
   array (
     'id' => 69,
     'name' => 'Mundo 3 (España)',
   ),
-  38 => 
+  40 => 
   array (
     'id' => 128,
     'name' => 'Mundo 3 (Portuguesa) ',
   ),
-  39 => 
+  41 => 
   array (
     'id' => 78,
     'name' => 'Mundo 3 Brazil ',
   ),
-  40 => 
+  42 => 
   array (
     'id' => 82,
     'name' => 'Mundo 4 (España) ',
   ),
-  41 => 
+  43 => 
   array (
     'id' => 136,
     'name' => 'Mundo 4 (Portuguesa)  ',
   ),
-  42 => 
+  44 => 
   array (
     'id' => 99,
     'name' => 'Mundo 4 Brazil  ',
   ),
-  43 => 
+  45 => 
   array (
     'id' => 102,
     'name' => 'Mundo 5 (España)  ',
   ),
-  44 => 
+  46 => 
   array (
     'id' => 157,
     'name' => 'Mundo 5 Brazil   ',
   ),
-  45 => 
+  47 => 
   array (
     'id' => 126,
     'name' => 'Mundo 6 (España)   ',
   ),
-  46 => 
+  48 => 
   array (
     'id' => 170,
     'name' => 'Mundo 6 Brazil    ',
   ),
-  47 => 
+  49 => 
   array (
     'id' => 139,
     'name' => 'Mundo 7 (España)    ',
   ),
-  48 => 
+  50 => 
   array (
     'id' => 179,
     'name' => 'Mundo 7 Brazil     ',
   ),
-  49 => 
+  51 => 
   array (
     'id' => 149,
     'name' => 'Mundo 8 (España)     ',
   ),
-  50 => 
+  52 => 
   array (
     'id' => 199,
     'name' => 'Mundo 8 Brazil      ',
   ),
-  51 => 
+  53 => 
   array (
     'id' => 163,
     'name' => 'Mundo 9 (España)      ',
   ),
-  52 => 
+  54 => 
   array (
     'id' => 231,
     'name' => 'Mundo 9 Brazil       ',
   ),
-  53 => 
+  55 => 
   array (
     'id' => 113,
     'name' => 'Svet 1',
   ),
-  54 => 
+  56 => 
   array (
     'id' => 119,
     'name' => 'Svět 1',
   ),
-  55 => 
+  57 => 
   array (
     'id' => 187,
     'name' => 'Svět 2 ',
   ),
-  56 => 
+  58 => 
+  array (
+    'id' => 242,
+    'name' => 'Svět 3  ',
+  ),
+  59 => 
   array (
     'id' => 115,
     'name' => 'Verden 1',
   ),
-  57 => 
+  60 => 
   array (
     'id' => 118,
     'name' => 'Verden 1',
   ),
-  58 => 
+  61 => 
   array (
     'id' => 116,
     'name' => 'Világ 1',
   ),
-  59 => 
+  62 => 
   array (
     'id' => 232,
     'name' => 'Világ 2 ',
   ),
-  60 => 
+  63 => 
   array (
     'id' => 112,
     'name' => 'Världen 1',
   ),
-  61 => 
+  64 => 
   array (
     'id' => 15,
     'name' => 'Welt 1',
   ),
-  62 => 
+  65 => 
   array (
     'id' => 76,
     'name' => 'Welt 10 ',
   ),
-  63 => 
+  66 => 
   array (
     'id' => 80,
     'name' => 'Welt 11  ',
   ),
-  64 => 
+  67 => 
   array (
     'id' => 85,
     'name' => 'Welt 12   ',
   ),
-  65 => 
+  68 => 
   array (
     'id' => 101,
     'name' => 'Welt 13    ',
   ),
-  66 => 
+  69 => 
   array (
     'id' => 105,
     'name' => 'Welt 14     ',
   ),
-  67 => 
+  70 => 
   array (
     'id' => 110,
     'name' => 'Welt 15      ',
   ),
-  68 => 
+  71 => 
   array (
     'id' => 123,
     'name' => 'Welt 16       ',
   ),
-  69 => 
+  72 => 
   array (
     'id' => 130,
     'name' => 'Welt 17        ',
   ),
-  70 => 
+  73 => 
   array (
     'id' => 137,
     'name' => 'Welt 18         ',
   ),
-  71 => 
+  74 => 
   array (
     'id' => 144,
     'name' => 'Welt 19          ',
   ),
-  72 => 
+  75 => 
   array (
     'id' => 16,
     'name' => 'Welt 2',
   ),
-  73 => 
+  76 => 
   array (
     'id' => 146,
     'name' => 'Welt 20           ',
   ),
-  74 => 
+  77 => 
   array (
     'id' => 156,
     'name' => 'Welt 21            ',
   ),
-  75 => 
+  78 => 
   array (
     'id' => 158,
     'name' => 'Welt 22             ',
   ),
-  76 => 
+  79 => 
   array (
     'id' => 166,
     'name' => 'Welt 23              ',
   ),
-  77 => 
+  80 => 
   array (
     'id' => 171,
     'name' => 'Welt 24               ',
   ),
-  78 => 
+  81 => 
   array (
     'id' => 177,
     'name' => 'Welt 25                ',
   ),
-  79 => 
+  82 => 
   array (
     'id' => 184,
     'name' => 'Welt 26                 ',
   ),
-  80 => 
+  83 => 
   array (
     'id' => 192,
     'name' => 'Welt 27                  ',
   ),
-  81 => 
+  84 => 
   array (
     'id' => 194,
     'name' => 'Welt 28                   ',
   ),
-  82 => 
+  85 => 
   array (
     'id' => 203,
     'name' => 'Welt 29                    ',
   ),
-  83 => 
+  86 => 
   array (
     'id' => 19,
     'name' => 'Welt 3',
   ),
-  84 => 
+  87 => 
   array (
     'id' => 223,
     'name' => 'Welt 30                     ',
   ),
-  85 => 
+  88 => 
   array (
     'id' => 225,
     'name' => 'Welt 31                      ',
   ),
-  86 => 
+  89 => 
+  array (
+    'id' => 236,
+    'name' => 'Welt 32                       ',
+  ),
+  90 => 
+  array (
+    'id' => 245,
+    'name' => 'Welt 33                        ',
+  ),
+  91 => 
   array (
     'id' => 26,
     'name' => 'Welt 4',
   ),
-  87 => 
+  92 => 
   array (
     'id' => 46,
     'name' => 'Welt 5',
   ),
-  88 => 
+  93 => 
   array (
     'id' => 58,
     'name' => 'Welt 6',
   ),
-  89 => 
+  94 => 
   array (
     'id' => 64,
     'name' => 'Welt 7',
   ),
-  90 => 
+  95 => 
   array (
     'id' => 68,
     'name' => 'Welt 8',
   ),
-  91 => 
+  96 => 
   array (
     'id' => 74,
     'name' => 'Welt 9',
   ),
-  92 => 
+  97 => 
   array (
     'id' => 44,
     'name' => 'Wereld 1',
   ),
-  93 => 
+  98 => 
   array (
     'id' => 54,
     'name' => 'Wereld 2',
   ),
-  94 => 
+  99 => 
   array (
     'id' => 153,
     'name' => 'Wereld 3 ',
   ),
-  95 => 
+  100 => 
   array (
     'id' => 200,
     'name' => 'Wereld 4  ',
   ),
-  96 => 
+  101 => 
   array (
     'id' => 24,
     'name' => 'World 10 (Europe)',
   ),
-  97 => 
+  102 => 
   array (
     'id' => 25,
     'name' => 'World 11 (Europe)',
   ),
-  98 => 
+  103 => 
   array (
     'id' => 27,
     'name' => 'World 12 (Europe)',
   ),
-  99 => 
+  104 => 
   array (
     'id' => 28,
     'name' => 'World 13 (USA East Coast)',
   ),
-  100 => 
+  105 => 
   array (
     'id' => 30,
     'name' => 'World 14 (Europe)',
   ),
-  101 => 
+  106 => 
   array (
     'id' => 29,
     'name' => 'World 15 (Europe)',
   ),
-  102 => 
+  107 => 
   array (
     'id' => 31,
     'name' => 'World 16 (Europe)',
   ),
-  103 => 
+  108 => 
   array (
     'id' => 32,
     'name' => 'World 17 (USA East Coast)',
   ),
-  104 => 
+  109 => 
   array (
     'id' => 33,
     'name' => 'World 18 (Europe)',
   ),
-  105 => 
+  110 => 
   array (
     'id' => 34,
     'name' => 'World 19 (USA West Coast)',
   ),
-  106 => 
+  111 => 
   array (
     'id' => 36,
     'name' => 'World 21 (Europe)',
   ),
-  107 => 
+  112 => 
   array (
     'id' => 56,
     'name' => 'World 22 (USA East Coast)',
   ),
-  108 => 
+  113 => 
   array (
     'id' => 57,
     'name' => 'World 23 (Europe)',
   ),
-  109 => 
+  114 => 
   array (
     'id' => 59,
     'name' => 'World 24 (Europe)',
   ),
-  110 => 
+  115 => 
   array (
     'id' => 60,
     'name' => 'World 25 (USA West Coast)',
   ),
-  111 => 
+  116 => 
   array (
     'id' => 61,
     'name' => 'World 26 (USA East Coast)',
   ),
-  112 => 
+  117 => 
   array (
     'id' => 62,
     'name' => 'World 27 (Europe)',
   ),
-  113 => 
+  118 => 
   array (
     'id' => 66,
     'name' => 'World 28 (USA East Coast)',
   ),
-  114 => 
+  119 => 
   array (
     'id' => 67,
     'name' => 'World 29 (Europe)',
   ),
-  115 => 
+  120 => 
   array (
     'id' => 35,
     'name' => 'World 30 (Europe)',
   ),
-  116 => 
+  121 => 
   array (
     'id' => 70,
     'name' => 'World 31 (USA West Coast)',
   ),
-  117 => 
+  122 => 
   array (
     'id' => 71,
     'name' => 'World 32 (USA East Coast)',
   ),
-  118 => 
+  123 => 
   array (
     'id' => 73,
     'name' => 'World 33 (Europe)',
   ),
-  119 => 
+  124 => 
   array (
     'id' => 77,
     'name' => 'World 34 (Europe) ',
   ),
-  120 => 
+  125 => 
   array (
     'id' => 79,
     'name' => 'World 35 (USA East Coast) ',
   ),
-  121 => 
+  126 => 
   array (
     'id' => 81,
     'name' => 'World 36 (Europe)  ',
   ),
-  122 => 
+  127 => 
   array (
     'id' => 86,
     'name' => 'World 37 (Europe)',
   ),
-  123 => 
+  128 => 
   array (
     'id' => 87,
     'name' => 'World 38 (USA West Coast)',
   ),
-  124 => 
+  129 => 
   array (
     'id' => 88,
     'name' => 'World 39 (USA East Coast)',
   ),
-  125 => 
+  130 => 
   array (
     'id' => 13,
     'name' => 'World 4 (Europe)',
   ),
-  126 => 
+  131 => 
   array (
     'id' => 100,
     'name' => 'World 40 (Europe) ',
   ),
-  127 => 
+  132 => 
   array (
     'id' => 104,
     'name' => 'World 41 (Europe) ',
   ),
-  128 => 
+  133 => 
   array (
     'id' => 106,
     'name' => 'World 42 (USA East Coast) ',
   ),
-  129 => 
+  134 => 
   array (
     'id' => 108,
     'name' => 'World 43 (Europe)  ',
   ),
-  130 => 
+  135 => 
   array (
     'id' => 121,
     'name' => 'World 44 (Europe)   ',
   ),
-  131 => 
+  136 => 
   array (
     'id' => 124,
     'name' => 'World 45 (USA West Coast) ',
   ),
-  132 => 
+  137 => 
   array (
     'id' => 125,
     'name' => 'World 46 (USA East Coast)  ',
   ),
-  133 => 
+  138 => 
   array (
     'id' => 127,
     'name' => 'World 47 (Europe)    ',
   ),
-  134 => 
+  139 => 
   array (
     'id' => 132,
     'name' => 'World 48 (Europe)     ',
   ),
-  135 => 
+  140 => 
   array (
     'id' => 133,
     'name' => 'World 49 (USA East Coast)   ',
   ),
-  136 => 
+  141 => 
   array (
     'id' => 14,
     'name' => 'World 5 (USA East Coast)',
   ),
-  137 => 
+  142 => 
   array (
     'id' => 138,
     'name' => 'World 50 (Europe)      ',
   ),
-  138 => 
+  143 => 
   array (
     'id' => 140,
     'name' => 'World 51 (USA West Coast)  ',
   ),
-  139 => 
+  144 => 
   array (
     'id' => 141,
     'name' => 'World 52 (USA East Coast)    ',
   ),
-  140 => 
+  145 => 
   array (
     'id' => 142,
     'name' => 'World 53 (Europe)       ',
   ),
-  141 => 
+  146 => 
   array (
     'id' => 145,
     'name' => 'World 54 (Europe)        ',
   ),
-  142 => 
+  147 => 
   array (
     'id' => 148,
     'name' => 'World 55 (USA East Coast)     ',
   ),
-  143 => 
+  148 => 
   array (
     'id' => 151,
     'name' => 'World 56 (Europe)         ',
   ),
-  144 => 
+  149 => 
   array (
     'id' => 154,
     'name' => 'World 57 (Europe)          ',
   ),
-  145 => 
+  150 => 
   array (
     'id' => 155,
     'name' => 'World 58 (USA East Coast)      ',
   ),
-  146 => 
+  151 => 
   array (
     'id' => 159,
     'name' => 'World 59 (USA West Coast)   ',
   ),
-  147 => 
+  152 => 
   array (
     'id' => 17,
     'name' => 'World 6 (Europe)',
   ),
-  148 => 
+  153 => 
   array (
     'id' => 160,
     'name' => 'World 60 (Europe)           ',
   ),
-  149 => 
+  154 => 
   array (
     'id' => 161,
     'name' => 'World 61 (USA East Coast)       ',
   ),
-  150 => 
+  155 => 
   array (
     'id' => 164,
     'name' => 'World 62 (Europe)            ',
   ),
-  151 => 
+  156 => 
   array (
     'id' => 168,
     'name' => 'World 63 (Europe)             ',
   ),
-  152 => 
+  157 => 
   array (
     'id' => 174,
     'name' => 'World 64 (USA East Coast)        ',
   ),
-  153 => 
+  158 => 
   array (
     'id' => 175,
     'name' => 'World 65 (USA West Coast)    ',
   ),
-  154 => 
+  159 => 
   array (
     'id' => 178,
     'name' => 'World 66 (Europe)              ',
   ),
-  155 => 
+  160 => 
   array (
     'id' => 180,
     'name' => 'World 67 (USA East Coast)         ',
   ),
-  156 => 
+  161 => 
   array (
     'id' => 186,
     'name' => 'World 68 (USA West Coast)     ',
   ),
-  157 => 
+  162 => 
   array (
     'id' => 188,
     'name' => 'World 69 (USA East Coast)          ',
   ),
-  158 => 
+  163 => 
   array (
     'id' => 18,
     'name' => 'World 7 (Europe)',
   ),
-  159 => 
+  164 => 
   array (
     'id' => 190,
     'name' => 'World 70 (Europe)               ',
   ),
-  160 => 
+  165 => 
   array (
     'id' => 195,
     'name' => 'World 71 (USA East Coast)           ',
   ),
-  161 => 
+  166 => 
   array (
     'id' => 197,
     'name' => 'World 72 (Europe)                ',
   ),
-  162 => 
+  167 => 
   array (
     'id' => 201,
     'name' => 'World 73 (USA West Coast)      ',
   ),
-  163 => 
+  168 => 
   array (
     'id' => 202,
     'name' => 'World 74 (USA East Coast)            ',
   ),
-  164 => 
+  169 => 
   array (
     'id' => 220,
     'name' => 'World 75 (Anniversary)',
   ),
-  165 => 
+  170 => 
   array (
     'id' => 224,
     'name' => 'World 77 (USA East Coast)             ',
   ),
-  166 => 
+  171 => 
   array (
     'id' => 227,
     'name' => 'World 78 (Europe)                    ',
   ),
-  167 => 
+  172 => 
   array (
     'id' => 228,
     'name' => 'World 79 (USA West Coast)                 ',
   ),
-  168 => 
+  173 => 
   array (
     'id' => 20,
     'name' => 'World 8 (USA East Coast)',
   ),
-  169 => 
+  174 => 
   array (
     'id' => 229,
     'name' => 'World 80 (USA East Coast)                  ',
   ),
-  170 => 
+  175 => 
   array (
     'id' => 230,
     'name' => 'World 81 (Europe)                     ',
   ),
-  171 => 
+  176 => 
+  array (
+    'id' => 235,
+    'name' => 'World 82 (Europe)                      ',
+  ),
+  177 => 
+  array (
+    'id' => 237,
+    'name' => 'World 83 (USA East Coast)                   ',
+  ),
+  178 => 
+  array (
+    'id' => 240,
+    'name' => 'World 84 (Europe)                       ',
+  ),
+  179 => 
+  array (
+    'id' => 244,
+    'name' => 'World 85 (Europe)                        ',
+  ),
+  180 => 
+  array (
+    'id' => 246,
+    'name' => 'World 86 (USA East Coast)                   ',
+  ),
+  181 => 
+  array (
+    'id' => 247,
+    'name' => 'World 87 (Europe)                         ',
+  ),
+  182 => 
+  array (
+    'id' => 248,
+    'name' => 'World 88 (USA West Coast)                  ',
+  ),
+  183 => 
   array (
     'id' => 21,
     'name' => 'World 9 (USA West Coast)',
   ),
-  172 => 
+  184 => 
+  array (
+    'id' => 253,
+    'name' => 'World Championship     ',
+  ),
+  185 => 
   array (
     'id' => 40,
     'name' => 'Świat 1',
   ),
-  173 => 
+  186 => 
   array (
     'id' => 50,
     'name' => 'Świat 2',
   ),
-  174 => 
+  187 => 
   array (
     'id' => 103,
     'name' => 'Świat 3 ',
   ),
-  175 => 
+  188 => 
   array (
     'id' => 129,
     'name' => 'Świat 4  ',
   ),
-  176 => 
+  189 => 
   array (
     'id' => 150,
     'name' => 'Świat 5   ',
   ),
-  177 => 
+  190 => 
   array (
     'id' => 167,
     'name' => 'Świat 6    ',
   ),
-  178 => 
+  191 => 
   array (
     'id' => 182,
     'name' => 'Świat 7     ',
   ),
-  179 => 
+  192 => 
   array (
     'id' => 206,
     'name' => 'Świat 8      ',
   ),
-  180 => 
+  193 => 
   array (
-    'id' => 41,
-    'name' => 'Мир 1',
+    'id' => 238,
+    'name' => 'Świat 9       ',
   ),
-  181 => 
+  194 => 
   array (
     'id' => 111,
     'name' => 'Мир 1',
   ),
-  182 => 
+  195 => 
+  array (
+    'id' => 41,
+    'name' => 'Мир 1',
+  ),
+  196 => 
   array (
     'id' => 162,
     'name' => 'Мир 10       ',
   ),
-  183 => 
+  197 => 
   array (
     'id' => 165,
     'name' => 'Мир 11        ',
   ),
-  184 => 
+  198 => 
   array (
     'id' => 172,
     'name' => 'Мир 12         ',
   ),
-  185 => 
+  199 => 
   array (
     'id' => 176,
     'name' => 'Мир 13          ',
   ),
-  186 => 
+  200 => 
   array (
     'id' => 183,
     'name' => 'Мир 14           ',
   ),
-  187 => 
+  201 => 
   array (
     'id' => 196,
     'name' => 'Мир 15            ',
   ),
-  188 => 
+  202 => 
   array (
     'id' => 222,
     'name' => 'Мир 16',
   ),
-  189 => 
+  203 => 
+  array (
+    'id' => 234,
+    'name' => 'Мир 17 ',
+  ),
+  204 => 
   array (
     'id' => 52,
     'name' => 'Мир 2',
   ),
-  190 => 
+  205 => 
   array (
     'id' => 75,
     'name' => 'Мир 3',
   ),
-  191 => 
+  206 => 
   array (
     'id' => 83,
     'name' => 'Мир 4',
   ),
-  192 => 
+  207 => 
   array (
     'id' => 107,
     'name' => 'Мир 5  ',
   ),
-  193 => 
+  208 => 
   array (
     'id' => 122,
     'name' => 'Мир 6   ',
   ),
-  194 => 
+  209 => 
   array (
     'id' => 131,
     'name' => 'Мир 7    ',
   ),
-  195 => 
+  210 => 
   array (
     'id' => 143,
     'name' => 'Мир 8     ',
   ),
-  196 => 
+  211 => 
   array (
     'id' => 147,
     'name' => 'Мир 9      ',

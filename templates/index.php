@@ -57,6 +57,18 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
     </div>
     <div class="row">
         <div class="changelog span8 offset2">
+            <h5>16.12.2013</h5>
+            Added World Championship.
+            <h5>12.12.2013</h5>
+            Added World 86 (USA East Coast), World 87 (Europe), World 88 (USA West Coast).
+            <h5>10.11.2013</h5>
+            Added Dünya 5, Svět 3, World 85 (Europe), Welt 33.
+            <h5>15.10.2013</h5>
+            Added World 84 (Europe).
+            <h5>28.09.2013</h5>
+            Added World 83 (USA East Coast), Świat 9, Mundo 15 (España).
+            <h5>2.09.2013</h5>
+            Added Мир 17, World 82 (Europe), Welt 32.
             <h5>16.08.2013</h5>
             Added World 81 (Europe), Mundo 9 Brazil, Világ 2, Monde 12.
             <h5>15.07.2013</h5>
@@ -64,9 +76,9 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
             <h5>9.07.2013</h5>
             Added Welt 31, Mundo 14 (España), World 78 (Europe), World 79 (USA West Coast).
             <h5>12.06.2013</h5>
-            Added Мир 16, Welt 30, World 77 (USA East Coast)
+            Added Мир 16, Welt 30, World 77 (USA East Coast).
             <h5>28.05.2013</h5>
-            Added World 75 (Anniversary)
+            Added World 75 (Anniversary).
             <h5>19.05.2013</h5>
             Added Welt 29, Mundo 13 (España), Monde 11, Świat 8, Mondo 3.
             <h5>7.05.2013</h5>
@@ -119,7 +131,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
             <h5>7.11.2012</h5>
             Added Мир 1, Världen 1, Svet 1, Lume 1, Verden 1, Világ 1, Maailma 1, Verden 1, Svět 1.
             <h5>4.11.2012</h5>
-            Added Monde 7, Mundo 4 (Portuguesa), Welt 18, World 50 (Europe), Mundo 5 (España)
+            Added Monde 7, Mundo 4 (Portuguesa), Welt 18, World 50 (Europe), Mundo 5 (España).
             <h5>31.10.2012</h5>
             Added Modne 2, World 49.
             <h5>24.10.2012</h5>
@@ -155,7 +167,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
             <h5>6.08.2012</h5>
             Added Welt 10, World 34, Mundo 3 Brazil, World 35, Welt 11. Added Donate button.
             <h5>24.07.2012</h5>
-            Added Świat 2, World 33 (Europe), Welt 9, Мир 3
+            Added Świat 2, World 33 (Europe), Welt 9, Мир 3.
             <h5>17.07.2012</h5>
             Added Mundo 3, World 31, World 32, Monde 4. Rewrote parser hope EA will not block me anymore :E.
             <h5>11.07.2012</h5>

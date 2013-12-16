@@ -59,8 +59,10 @@ var map = {
             map.maxX = 16;
         } else if (map.maxX = map.maxX > 10 || map.maxY > 10) {
             map.maxX = 11;
-        } else {
+        } else if (map.maxX = map.maxX > 4 || map.maxY > 4) {
             map.maxX = 10;
+        }else{
+            map.maxX = 4;
         }
         map.maxY = map.maxX;
 
