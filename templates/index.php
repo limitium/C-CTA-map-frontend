@@ -57,6 +57,16 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
     </div>
     <div class="row">
         <div class="changelog span8 offset2">
+            <h5>12.3.2014</h5>
+            Added Mondo4, World Forgotten Attacks Beta, World 92 (USA West Coast), Мир 19.
+            <h5>26.2.2014</h5>
+            Added World 90 (USA West Coast), World 91 (Europe).
+            <h5>2.2.2014</h5>
+            Added Mundo 16 (España), World 85 (Europe), Wereld 5, Świat 10.
+            <h5>9.1.2014</h5>
+            Added Welt 34.
+            <h5>30.12.2013</h5>
+            Added Monde 13, Мир 18, Mundo 10 Brazil.
             <h5>16.12.2013</h5>
             Added World Championship.
             <h5>12.12.2013</h5>
