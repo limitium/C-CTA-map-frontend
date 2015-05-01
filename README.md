@@ -1,5 +1,5 @@
 # Command and Conquer Tiberium Alliances map
- for this project http://tiberium-alliances.com
+ for this project http://map.tiberium-alliances.com
 
 ## Install map
  Database stucture you can find in
