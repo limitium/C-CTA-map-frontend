@@ -232,5 +232,12 @@ $app->post("/path/delete/:hash", $checkAuthorization, function ($hash) use ($app
 
     $app->response()->body(1);
 });
-
+$app->post('/savedata', function () use ($app, $settings) {
+    $key = $app->request()->post("key");
+    if ($key == $settings["post_secret"]) {
+        $servers = unserialize($app->request()->post("servers"));
+        file_put_contents(__DIR__ . "/models/servers.php", "<?php return " . var_export($servers, 1) . ";");
+        $app->response()->body("ok");
+    }
+});
 $app->run();
